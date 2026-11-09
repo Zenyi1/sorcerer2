@@ -1,16 +1,24 @@
 ========================================================================================================
-  LAUNCHCAST  |  L-glutamine oral powder (ENDARI)  |  Saudi Arabia (SA)  |  indication: SCD
+  LAUNCHCAST  |  L-glutamine oral powder (ENDARI) in Saudi Arabia (SA), indication SCD
   Originator: Emmaus Life Sciences (NASDAQ: EMMA). Deal: Exclusive MENA commercialization partnership:
   partner bears all commercialization costs and pays milestones plus a high double-digit royalty on
   net sales with taiba Healthcare (Kuwait) (2019).
   Perspective: launch partner P&L. Horizon: 2026-2035. Status here: filed 2021-05; decision expected
   ~2027.5 (SFDA), P(approval)=75%.
 ========================================================================================================
-  Evidence grades: [V] verified primary source  [R] reported/secondary  [C] originator's own figure  [A] our assumption  [O] command-line override  [M] model output
+  Evidence grades: [V] verified primary source, [R] reported/secondary, [C] originator's own figure,
+  [A] our assumption, [O] command-line override, [M] model output.
+
+-- SUMMARY ---------------------------------------------------------------------------------------------
+  Saudi Arabia: LAUNCH. 12,258 label-eligible adults, 56% chance of a paying route, first reimbursed
+  sale 2028.5, peak $37.7m if reimbursed ($22.4m probability-weighted), risk-adjusted NPV $13.8m,
+  payback 3 yr.
+  Colombia: DO NOT LAUNCH. 740 eligible, 37% chance of a paying route, first reimbursed sale 2030.9,
+  peak $940k if reimbursed, risk-adjusted NPV -$1.5m, payback none in horizon.
+  Main disagreements with the originator: Price. Timing. Revealed uptake.
 
 -- INPUTS ----------------------------------------------------------------------------------------------
-
-  1. EPIDEMIOLOGY AND PREVALENCE -> label-eligible patients
+  1. Epidemiology and prevalence: label-eligible patients
   Step                                                   Factor                     Patients    Grade
   -----------------------------------------------------  -------------------------  ----------  -----
   Adults in the epidemiology base                        19,600,000 x 66.5% adults  13,034,000    [V]
@@ -33,8 +41,7 @@
       population with poorer access. One value used for both.
     Base note: Hemoglobinopathy burden is concentrated in Saudi nationals (Eastern Province, Jazan,
     Madinah). Expatriate carriers exist but are rarely reimbursed by the state; excluded.
-
-  2. REIMBURSEMENT AND MARKET ACCESS
+  2. Reimbursement and market access
     Regulator: SFDA. Abridged/verification review for FDA- or EMA-approved products; Breakthrough
     Medicines Program for priority assets. Typical review 9 months [R]; P(approval | FDA/EMA approved)
     95% [A].
@@ -55,10 +62,10 @@
       ENERGIZE trials
       - private_chi: Mostly expatriates and private-sector Saudis; insurers restrict high-cost orphan
       drugs
-  Early access before listing: 1% of eligible [R]. Blended P(a patient has a paying route) = 75%.
-
-  3. COMPETING THERAPIES -> peak share model (multinomial logit on efficacy, convenience, safety, price)
-  Payer utility weights here: efficacy 2.5, convenience 1.0, safety 1.0, price 0.8 [A]; standard of care gets a status-quo bonus of 1.5.
+  Early access before listing: 1.2% of eligible [R]. Blended P(a patient has a paying route) = 75%.
+  3. Competing therapies: peak share model (multinomial logit on efficacy, convenience, safety, price)
+  Payer utility weights here: efficacy 2.5, convenience 1.0, safety 1.0, price 0.8 [A]; standard of
+  care gets a status-quo bonus of 1.5.
   Seg  Therapy                                               Here               Eff  Conv  Safe  Price/yr  Share     
   ---  ----------------------------------------------------  ----------------  ----  ----  ----  --------  -----  ---
   SCD  Hydroxyurea + supportive care (folate, analgesia, tr  available         0.00  0.80  0.80       $3k  84.9%     
@@ -72,8 +79,7 @@
       trial failed 2023 and the EU authorisation was revoked, so use is limited where still registered
       - exagamglogene autotemcel (Casgevy, one-time gene editing): SFDA approval Jan 2024 for SCD >= 12y;
       one authorised centre so far
-
-  4. PRICING REFERENCES -> external reference price
+  4. Pricing references: external reference price
     Rule: SFDA Drug Pricing (2023 Drug Pricing Guidelines); statistic 'median' over basket US, DE, FR,
     GB, IT, ES, NL, SE, AT, PT, PL, HU, CA, AU, JP, KR; origin-country cap: True. Basket size has moved
     30 -> 20 (2021) -> 16 (2022) per ISPOR 2023 poster; one 2024 source cites 34. The statistic (median
@@ -83,21 +89,20 @@
   Ctry  Indication  Brand   USD/yr  Grade  In basket?
   ----  ----------  ------  ------  -----  ----------
   US    SCD         ENDARI  $42k    [R]    used      
-  ERP result: $42k per patient-year list (median of 1 basket price) = SAR 157,500 at 3.75 SAR/USD [V]. Standard of care costs $15k/yr [A].
+  ERP result: $42k per patient-year list (median of 1 basket price) = SAR 157,500 at 3.75 SAR/USD [V].
+  Standard of care costs $15k/yr [A].
       - US ENDARI: Emmaus operational update: WAC $1,154 per 60-packet box from Q1 2020 (up from $1,110).
       An adult >= 65 kg takes 6 packets/day = 36.5 boxes/yr = ~$42k; ICER's 2020 draft modelled ~$24k/yr
       at label-average dosing. US generic L-glutamine (ANI) launched July 2024, so the US list price is a
       ceiling, not a floor.
-
-  5. LAUNCH ECONOMICS (partner view)
+  5. Launch economics (partner view)
     Transfer price to originator 65% of net sales [A]; logistics 6%; launch opex $900k/yr [A];
     pre-launch opex $0/yr; upfront: Pricing / market-access dossiers, NUPCO and institutional listings
     $150k at approval; Pharmacovigilance, import licence, cold-chain / 3PL set-up $100k at approval.
     Cost of capital 10%. Persistence 78% [R]. Budget-impact ceiling 1.0% of a $10.7bn drug market =
     $107m/yr public spend [A].
 
--- OUTPUT: 10-YEAR FORECAST ----------------------------------------------------------------------------
-
+-- OUTPUT: 10-YEAR FORECAST, Saudi Arabia --------------------------------------------------------------
   Year  Eligible  Access  Uptake  Pts(succ)  Pts(exp)  Net $/pt  Sales(succ)  Sales(exp)  Cash(exp)  Cum cash
   ----  --------  ------  ------  ---------  --------  --------  -----------  ----------  ---------  --------
   2026    12,258      0%      0%          0         0      $35k           $0          $0         $0        $0
@@ -110,9 +115,9 @@
   2033    13,605     95%     98%      1,141       679      $32k       $36.1m      $21.4m      $4.9m    $17.1m
   2034    13,809     95%    100%      1,170       696      $32k       $37.0m      $22.0m      $5.0m    $22.1m
   2035    14,016     95%    100%      1,192       709      $32k       $37.7m      $22.4m      $5.1m    $27.2m
-  'succ' = if registered and every modelled payer route pays; 'exp' = probability-weighted (registration x coverage).
-
-  KEY METRICS
+  'succ' = if registered and every modelled payer route pays; 'exp' = probability-weighted
+  (registration x coverage).
+  Key metrics
   Metric                                    Value                       
   ----------------------------------------  ----------------------------
   Label-eligible adults (range)             12,258 (8,387 - 14,517)     
@@ -125,8 +130,7 @@
   P(registration) x P(paying route)         75% x 75% = 56%             
   Risk-adjusted NPV (exp) / NPV (succ)      $13.8m / $24.2m             
   Payback from first sale                   3 years                     
-
-  VERDICT: LAUNCH
+  Verdict: LAUNCH
   Rule                          Value   Threshold  Result  Type
   ----------------------------  ------  ---------  ------  ----
   Risk-adjusted NPV (expected)  $13.8m  >= $0m     pass    hard
@@ -136,7 +140,6 @@
   Patients on therapy at peak   1,192   >= 20      pass    soft
 
 -- COMPARE: Saudi Arabia vs Colombia -------------------------------------------------------------------
-
                                    Saudi Arabia                                      Colombia                                        
   -------------------------------  ------------------------------------------------  ------------------------------------------------
   Verdict                          LAUNCH                                            DO NOT LAUNCH                                   
@@ -152,8 +155,7 @@
   Risk-adjusted NPV                $13.8m                                            -$1.5m                                          
   Payback                          3 yr                                              none in horizon                                 
   Expected bad debt                0%                                                12%                                             
-
-  WHY: multiplicative decomposition of peak-year net sales (SA / CO)
+  Why: multiplicative decomposition of peak-year net sales (SA / CO)
   Factor                                                  SA     CO   Ratio
   --------------------------------------------------  ------  -----  ------
   Label-eligible adults (peak year)                   14,016    776  18.06x
@@ -169,8 +171,7 @@
     line by line. Memo lines are not in the product: collections hit cash rather than sales, and timing
     hits the NPV through the years lost to registration and listing.
 
--- WHERE THE MODEL DISAGREES WITH EMMAUS' OWN STATED NUMBERS -------------------------------------------
-
+-- WHERE THE MODEL DISAGREES WITH EMMAUS' OWN STATED NUMBERS: Saudi Arabia -----------------------------
   Patients
   Step                                                   Patients  Grade
   -----------------------------------------------------  --------  -----
@@ -189,7 +190,6 @@
       - Choosing this therapy (peak competitive share): 11% vs standard of care and crizanlizumab,
       exagamglogene autotemcel
       - Still on therapy (persistence): x 78%
-
   Price per patient-year
   Step                                                                              USD  Grade
   -------------------------------------------------------------------------------  ----  -----
@@ -199,14 +199,12 @@
       - Model: Saudi Arabia list price after external reference pricing: median of 1 basket price
       - Model: blended net price at peak (tenders, formulary discounts, budget cap, FX): budget-impact
       ceiling not binding
-
   Revenue comparators
   View                                              Per year
   ------------------------------------------------  --------
   Naive TAM: prevalent patient figure x US price      $2.1bn
   This model: peak net sales if reimbursed (2035)     $37.7m
   This model: peak net sales, probability-weighted    $22.4m
-
   Disagreements, and why
     1. Price. US $42,000 is not a reference for Saudi Arabia: the ERP rule (median of 1 basket price)
     gives $42,000 list, and procurement discounts, early-access pricing and the budget ceiling bring the
@@ -222,13 +220,11 @@
     prevalent patients on therapy seven years after approval); the model's 11% peak share of
     label-eligible patients here (2.8% of prevalent) is far above that and rests on the competitive set
     and payer weights printed in the inputs. Treat it as the upper half of the range.
-
   Agreements
     - Emmaus and taiba put their Gulf effort into Saudi Arabia (priority review, NUPCO exclusivity,
     early access); the model also finds it the only one of the two countries worth a dedicated effort.
 
--- WHERE THE MODEL DISAGREES WITH EMMAUS' OWN STATED NUMBERS -------------------------------------------
-
+-- WHERE THE MODEL DISAGREES WITH EMMAUS' OWN STATED NUMBERS: Colombia ---------------------------------
   Patients
   Step                                                   Patients  Grade
   -----------------------------------------------------  --------  -----
@@ -246,7 +242,6 @@
       payers excluded
       - Choosing this therapy (peak competitive share): 5% vs standard of care and crizanlizumab
       - Still on therapy (persistence): x 75%
-
   Price per patient-year
   Step                                                                              USD  Grade
   -------------------------------------------------------------------------------  ----  -----
@@ -256,14 +251,12 @@
       - Model: Colombia list price after external reference pricing: p25 of 1 basket price
       - Model: blended net price at peak (tenders, formulary discounts, budget cap, FX): budget-impact
       ceiling not binding
-
   Revenue comparators
   View                                              Per year
   ------------------------------------------------  --------
   Naive TAM: prevalent patient figure x US price     $172.6m
   This model: peak net sales if reimbursed (2034)      $940k
   This model: peak net sales, probability-weighted     $358k
-
   Disagreements, and why
     1. Price. US $42,000 is not a reference for Colombia: the ERP rule (p25 of 1 basket price) gives
     $42,000 list, and procurement discounts, early-access pricing and the budget ceiling bring the
@@ -276,12 +269,10 @@
     3. Geography. The originator has not filed here and lists no partner; the model agrees with that
     revealed preference and shows why: a 740-patient eligible pool, 37% probability of a paying route,
     INVIMA review of ~29 months and 12% expected bad debt.
-
   Agreements
     - No originator statements about this country were found to agree or disagree with beyond price.
 
 -- SENSITIVITY: Saudi Arabia risk-adjusted NPV (base $13.8m) -------------------------------------------
-
   Driver                        Low case  High case  Swing                           Verdict
   ----------------------------  --------  ---------  ------------------------------  -------
   Payer price sensitivity          $6.5m     $20.5m  ##############################         
@@ -302,7 +293,6 @@
     marks drivers that change the sign of the NPV on their own.
 
 -- SENSITIVITY: Colombia risk-adjusted NPV (base -$1.5m) -----------------------------------------------
-
   Driver                        Low case  High case  Swing                           Verdict
   ----------------------------  --------  ---------  ------------------------------  -------
   Launch opex                     -$1.9m     -$1.3m  ##############################         

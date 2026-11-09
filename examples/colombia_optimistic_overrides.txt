@@ -1,15 +1,15 @@
 ========================================================================================================
-  LAUNCHCAST  |  mitapivat (PYRUKYND / AQVESME)  |  Colombia (CO)  |  indication: thalassemia
+  LAUNCHCAST  |  mitapivat (PYRUKYND / AQVESME) in Colombia (CO), indication thalassemia
   Originator: Agios Pharmaceuticals (NASDAQ: AGIO). Deal: GCC distribution agreement (MOU-stage
   equivalent: originator supplies product, partner files, imports and commercializes) with NewBridge
   Pharmaceuticals, Dubai (2024).
   Perspective: launch partner P&L. Horizon: 2026-2035. Status here: not filed; file 2027.0, decision
   ~2029.4 (INVIMA ~29 months), P(approval)=70%.
 ========================================================================================================
-  Evidence grades: [V] verified primary source  [R] reported/secondary  [C] originator's own figure  [A] our assumption  [O] command-line override  [M] model output
+  Evidence grades: [V] verified primary source, [R] reported/secondary, [C] originator's own figure,
+  [A] our assumption, [O] command-line override, [M] model output.
 
--- OUTPUT: 10-YEAR FORECAST ----------------------------------------------------------------------------
-
+-- OUTPUT: 10-YEAR FORECAST, Colombia ------------------------------------------------------------------
   Year  Eligible  Access  Uptake  Pts(succ)  Pts(exp)  Net $/pt  Sales(succ)  Sales(exp)  Cash(exp)  Cum cash
   ----  --------  ------  ------  ---------  --------  --------  -----------  ----------  ---------  --------
   2026       736      0%      0%          0         0     $208k           $0          $0         $0        $0
@@ -22,13 +22,13 @@
   2033       768     98%     87%         90        34     $189k       $17.0m       $6.4m      $811k    -$201k
   2034       772     98%     95%        100        38     $175k       $17.5m       $6.6m      $842k     $641k
   2035       777     98%     99%        103        39     $169k       $17.5m       $6.6m      $842k     $1.5m
-  'succ' = if registered and every modelled payer route pays; 'exp' = probability-weighted (registration x coverage).
-    Note: Budget-impact ceiling ($16m/yr public spend) binds in 2034-2035; modelled as a price-volume
+  'succ' = if registered and every modelled payer route pays; 'exp' = probability-weighted
+  (registration x coverage).
+    - Note: Budget-impact ceiling ($16m/yr public spend) binds in 2034-2035; modelled as a price-volume
     agreement that lowers the effective net price.
-    Note: ERP basket includes assumed EU prices (DE, FR, GB, IT); replace when Avanzanite lists in
+    - Note: ERP basket includes assumed EU prices (DE, FR, GB, IT); replace when Avanzanite lists in
     Europe.
-
-  KEY METRICS
+  Key metrics
   Metric                                    Value                         
   ----------------------------------------  ------------------------------
   Label-eligible adults (range)             736 (442 - 957)               
@@ -41,8 +41,7 @@
   P(registration) x P(paying route)         70% x 53% = 37%               
   Risk-adjusted NPV (exp) / NPV (succ)      $165k / $2.4m                 
   Payback from first sale                   6 years                       
-
-  VERDICT: DO NOT LAUNCH
+  Verdict: DO NOT LAUNCH
   Rule                          Value   Threshold  Result  Type
   ----------------------------  ------  ---------  ------  ----
   Risk-adjusted NPV (expected)  $0.2m   >= $0m     pass    hard

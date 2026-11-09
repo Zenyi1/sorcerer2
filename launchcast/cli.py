@@ -12,11 +12,13 @@ from .compare import decompose
 from .data import apply_overrides, list_assets, list_countries, load_asset, load_config, load_country
 from .decision import evaluate
 from .forecast import Forecast, run_forecast
-from .report import hr, money, render_bridge, render_compare, render_forecast, render_header, render_inputs, render_tornado, wrap
+from . import report
+from .report import (hr, money, render_bridge, render_compare, render_forecast, render_header, render_inputs,
+                     render_screen, render_summary, render_tornado, wrap)
 from .sensitivity import tornado
 
 
-COMMANDS = ["run", "inputs", "forecast", "compare", "disagree", "sensitivity", "list", "validate"]
+COMMANDS = ["run", "inputs", "forecast", "compare", "disagree", "sensitivity", "screen", "list", "validate"]
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -35,8 +37,11 @@ def _parser() -> argparse.ArgumentParser:
     p.add_argument("--narrate", action="store_true", help="append a plain-English narration from Claude (needs ANTHROPIC_API_KEY)")
     p.add_argument("--json", action="store_true", help="machine-readable output instead of the report")
     p.add_argument("--no-sensitivity", action="store_true", help="skip the tornado (faster)")
+    p.add_argument("--out", "-o", default=None, metavar="FILE",
+                   help="write the report to FILE instead of the terminal; .md gives light Markdown, anything else plain text")
+    p.add_argument("--format", choices=["text", "md"], default=None, help="force output format (default: by --out extension, else text)")
     p.add_argument("command", nargs="?", default="run", choices=COMMANDS,
-                   help="run = full report (default); inputs | forecast | compare | disagree | sensitivity | list | validate")
+                   help="run = full report (default); inputs | forecast | compare | disagree | sensitivity | screen (one asset, every country) | list | validate")
     return p
 
 
@@ -113,6 +118,41 @@ def main(argv: list[str] | None = None) -> int:
         print(f"{len(countries)} countries, {len(list_assets())} assets: " + ("OK" if not problems else f"{len(problems)} problem(s)"))
         return 0 if not problems else 1
 
+    fmt = args.format or ("md" if args.out and args.out.lower().endswith((".md", ".markdown")) else "text")
+    report.set_format(fmt)
+
+    def emit(text: str) -> int:
+        if args.out:
+            with open(args.out, "w", encoding="utf-8") as fh:
+                fh.write(text.rstrip() + "\n")
+            print(f"wrote {args.out} ({fmt}, {text.count(chr(10)) + 1} lines)")
+        else:
+            print(text)
+        return 0
+
+    if command == "screen":
+        asset = apply_overrides(load_asset(args.asset or config["default_asset"]), [s[6:] for s in args.set if s.startswith("asset:")])
+        codes = list_countries() if args.country is None else [args.country.upper()]
+        results = []
+        for code in codes:
+            country = apply_overrides(load_country(code), [s for s in args.set if not s.startswith(("vs:", "asset:"))])
+            if args.indication and args.indication not in country["epidemiology"]:
+                continue
+            try:
+                fc = run_forecast(country, asset, config, args.indication, not args.exclude_assumed_prices)
+            except KeyError as exc:
+                print(f"  skipped {code}: {exc}", file=sys.stderr)
+                continue
+            verdict, rules = evaluate(fc.metrics, config["decision_rules"])
+            results.append({"country": code, "country_name": country["name"], "verdict": verdict, "rules": rules,
+                            "metrics": fc.metrics, "status": fc.timeline.approval_label})
+        results.sort(key=lambda r: r["metrics"]["rnpv_expected"], reverse=True)
+        if args.json:
+            print(json.dumps([{**{k: r[k] for k in ("country", "country_name", "verdict", "status", "metrics")},
+                                "rules": [asdict(x) for x in r["rules"]]} for r in results], indent=2, default=str))
+            return 0
+        return emit(render_screen(asset, results))
+
     interactive = args.country is None and sys.stdin.isatty() and not args.json
     if args.country is None:
         if interactive:
@@ -166,6 +206,8 @@ def main(argv: list[str] | None = None) -> int:
 
     sections = []
     sections.append(render_header(fc, config))
+    if command == "run":
+        sections.append(render_summary(fc, verdict, rules, fc_b, vb, build_bridge(fc)))
     if command in ("run", "inputs"):
         sections.append(render_inputs(fc))
     if command in ("run", "forecast"):
@@ -197,8 +239,10 @@ def main(argv: list[str] | None = None) -> int:
             summary["decomposition"] = decompose(fc, fc_b)
         summary["bridge"] = {k: build_bridge(fc)[k] for k in ("disagreements", "agreements", "comparators")}
         sections.append(hr("NARRATION (Claude)", "-") + "\n\n" + wrap(narrate(summary), indent=2))
-    print("\n\n".join(sections))
-    return 0
+    rc = emit("\n\n".join(sections))
+    if args.out and command == "run":
+        print(f"  {country['name']}: {verdict}" + (f"; {comparator['name']}: {vb}" if comparator else ""))
+    return rc
 
 
 if __name__ == "__main__":

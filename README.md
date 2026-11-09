@@ -32,6 +32,17 @@ pip install -e .
 launchcast --country SA --vs CO
 ```
 
+## Output file
+
+Add `--out FILE` to any command. A `.md` extension gives light Markdown (headings, pipe tables where
+there is a table, plain paragraphs otherwise, summary first); any other extension gives the plain
+text you would see in the terminal. The terminal then shows only the verdicts.
+
+```bash
+launchcast --country SA --vs CO --out reports/mitapivat_SA_vs_CO.md
+launchcast screen --asset endari --out reports/endari_screen.md
+```
+
 ## Commands
 
 | Command | What it prints |
@@ -42,6 +53,7 @@ launchcast --country SA --vs CO
 | `... compare` | Side-by-side metrics and the multiplicative decomposition of the peak-sales gap |
 | `... disagree` | Bridge from the originator's stated numbers to the model's, with the disagreements spelled out |
 | `... sensitivity` | One-at-a-time tornado on risk-adjusted NPV; marks drivers that flip the verdict |
+| `launchcast screen --asset <id>` | One asset against every country file, ranked by risk-adjusted NPV, with verdict and failing rules per country |
 | `... list` | Countries and assets available |
 | `... validate` | Schema-check every data file; exit 1 with plain-language problems if any |
 
@@ -140,6 +152,28 @@ procurement in 2027 and peak uptake only around 2030 mean 2026-27 revenue is ear
 and at the modelled volumes the public bill would exceed 1% of national drug spend, which a payer
 answers with a price-volume agreement. Where it agrees: Saudi Arabia deserved an approval-first
 strategy, persistence (~75-78%), and the segment logic from the ENERGIZE trials.
+
+## What an asset file needs
+
+Think of it as three tiers. The engine runs on tier 1; tiers 2 and 3 make the bridge and the
+sensitivity sections say something.
+
+| Tier | Field | What it is | Where it comes from |
+|---|---|---|---|
+| 1 must have | `indication.id`, `indication.segments` | Disease id (must match an `epidemiology.<id>` block in each country file) and the patient segments the label splits into (one is fine) | Label |
+| 1 | `regulatory_status.<CC>` | `approved` + date, `filed` + expected decision + probability, or `not_filed`, per country | Regulator, company releases |
+| 1 | `reference_prices[]` | Annual price per patient in any country where it is sold (US WAC and dosing arithmetic at minimum); assumed EU prices allowed if graded `assumption` | Pricing disclosures, Lauer-Taxe, CADTH, company |
+| 1 | `competitors.<segment>[]` | Standard of care (`id: soc`), the asset itself (`id: <asset id>`, price null), each rival with efficacy / convenience / safety scores in [0,1], annual price, and availability in each country | Trials, labels, local registration status |
+| 2 should have | `indication.label_eligible_share_override` | Share of in-care adults who meet the label (when eligibility is a label property, not a country one) | Trial entry criteria |
+| 2 | `deal` | Partner, territory, economics in words; territory drives the "geography" disagreement | Term sheet / MOU |
+| 2 | `uptake.years_to_peak`, `uptake.home_market_observed_share` | Ramp speed; revealed uptake at home if launched (flags optimistic shares) | Analogues; home revenue / prevalence |
+| 3 nice to have | `biotech_view` | The originator's own numbers: home price, addressable share, patient claims by region with country split, access statements per country, reported regional revenue, points of agreement | Earnings calls, decks, 10-Q |
+| 3 | `clinical`, `pipeline_indications` | Trial facts for the record; next indications with approval probability and year for what-ifs | Publications, PDUFA dates |
+
+The country file carries everything about the place (population, prevalence per disease, payers,
+regulator, pricing rule, costs), so a new asset in a disease the country files already cover is
+one file. A new disease means adding an `epidemiology.<id>` block to each country file, which is
+the only input that is genuinely hard to source; the template shows the fields and the grades.
 
 ## Adding an asset or a country
 

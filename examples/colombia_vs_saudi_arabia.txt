@@ -1,16 +1,25 @@
 ========================================================================================================
-  LAUNCHCAST  |  mitapivat (PYRUKYND / AQVESME)  |  Colombia (CO)  |  indication: thalassemia
+  LAUNCHCAST  |  mitapivat (PYRUKYND / AQVESME) in Colombia (CO), indication thalassemia
   Originator: Agios Pharmaceuticals (NASDAQ: AGIO). Deal: GCC distribution agreement (MOU-stage
   equivalent: originator supplies product, partner files, imports and commercializes) with NewBridge
   Pharmaceuticals, Dubai (2024).
   Perspective: launch partner P&L. Horizon: 2026-2035. Status here: not filed; file 2027.0, decision
   ~2029.4 (INVIMA ~29 months), P(approval)=70%.
 ========================================================================================================
-  Evidence grades: [V] verified primary source  [R] reported/secondary  [C] originator's own figure  [A] our assumption  [O] command-line override  [M] model output
+  Evidence grades: [V] verified primary source, [R] reported/secondary, [C] originator's own figure,
+  [A] our assumption, [O] command-line override, [M] model output.
+
+-- SUMMARY ---------------------------------------------------------------------------------------------
+  Colombia: DO NOT LAUNCH. 74 label-eligible adults, 37% chance of a paying route, first reimbursed
+  sale 2030.9, peak $1.8m if reimbursed ($697k probability-weighted), risk-adjusted NPV -$1.5m,
+  payback none in horizon. Fails: Risk-adjusted NPV (expected), Peak net sales if reimbursed,
+  P(registered and reimbursed), Payback from first sale, Patients on therapy at peak.
+  Saudi Arabia: LAUNCH. 3,587 eligible, 75% chance of a paying route, first reimbursed sale 2026.7,
+  peak $125.3m if reimbursed, risk-adjusted NPV $111.9m, payback immediate.
+  Main disagreements with the originator: Price. Geography.
 
 -- INPUTS ----------------------------------------------------------------------------------------------
-
-  1. EPIDEMIOLOGY AND PREVALENCE -> label-eligible patients
+  1. Epidemiology and prevalence: label-eligible patients
   Step                                          Factor                     Patients    Grade
   --------------------------------------------  -------------------------  ----------  -----
   Adults in the epidemiology base               52,695,952 x 78.0% adults  41,102,843    [R]
@@ -35,8 +44,7 @@
     Base note: Hemoglobinopathies cluster in Afro-Colombian populations of the Pacific and Caribbean
     coasts (mostly HbS). Thalassemia is predominantly trait/minor of Mediterranean origin in the Andean
     region; beta-thalassemia major is rare.
-
-  2. REIMBURSEMENT AND MARKET ACCESS
+  2. Reimbursement and market access
     Regulator: INVIMA. Full sanitary registration (registro sanitario); no formal reliance clock for
     FDA/EMA-approved molecules. Typical review 29 months [R]; P(approval | FDA/EMA approved) 70% [R].
     System: Near-universal insurance (SGSSS) through EPS insurers in contributory and subsidized
@@ -54,18 +62,16 @@
       - eps_contributivo: MIPRES prescription is immediate after registration, but payment depends on
       ADRES transfers that were 50-55% short in 2025
       - eps_subsidiado: Nueva EPS and other intervened insurers concentrate here
-  Early access before listing: 0% of eligible [A]. Blended P(a patient has a paying route) = 53%.
-
-  3. COMPETING THERAPIES -> peak share model (multinomial logit on efficacy, convenience, safety, price)
-  Payer utility weights here: efficacy 2.5, convenience 1.0, safety 1.0, price 1.6 [A]; standard of care gets a status-quo bonus of 1.5.
-  Seg  Therapy                                               Here        Eff  Conv  Safe  Price/yr  Share  
-  ---  ----------------------------------------------------  ---------  ----  ----  ----  --------  -----  
-  TDT  Standard of care only (transfusion + iron chelation)  available  0.00  0.30  0.80      $40k  66.8%  
-       mitapivat (oral BID)                                  available  0.45  1.00  0.65     $208k  25.3%  
-       luspatercept (Reblozyl, SC every 3 weeks)             limited    0.45  0.50  0.80     $150k   7.8%  
-       exagamglogene autotemcel (Casgevy, one-time gene edi  none       0.95  0.40  0.60       $2m    n/a  
+  Early access before listing: 0.3% of eligible [A]. Blended P(a patient has a paying route) = 53%.
+  3. Competing therapies: peak share model (multinomial logit on efficacy, convenience, safety, price)
+  Payer utility weights here: efficacy 2.5, convenience 1.0, safety 1.0, price 1.6 [A]; standard of
+  care gets a status-quo bonus of 1.5.
   Seg   Therapy                                               Here        Eff  Conv  Safe  Price/yr  Share  
   ----  ----------------------------------------------------  ---------  ----  ----  ----  --------  -----  
+  TDT   Standard of care only (transfusion + iron chelation)  available  0.00  0.30  0.80      $40k  66.8%  
+        mitapivat (oral BID)                                  available  0.45  1.00  0.65     $208k  25.3%  
+        luspatercept (Reblozyl, SC every 3 weeks)             limited    0.45  0.50  0.80     $150k   7.8%  
+        exagamglogene autotemcel (Casgevy, one-time gene edi  none       0.95  0.40  0.60       $2m    n/a  
   NTDT  Watchful waiting / occasional transfusion / off-labe  available  0.00  0.70  0.90       $8k  90.1%  
         mitapivat (oral BID)                                  available  0.60  1.00  0.65     $208k   9.9%  
         luspatercept (Reblozyl, EU label for NTDT beta-thal   none       0.60  0.50  0.80     $150k    n/a  
@@ -79,8 +85,7 @@
       https://investors.vrtx.com/news-releases/news-release-details/vertex-announces-approval-first-crisprcas9-gene-edited-therapy
       - luspatercept (Reblozyl, EU label for NTDT beta-thal only): EU extension to NTDT beta-thalassemia
       2023 (BEYOND: 77% vs 0% Hb >=1 g/dL); not FDA approved for NTDT; alpha-thalassemia not covered
-
-  4. PRICING REFERENCES -> external reference price
+  4. Pricing references: external reference price
     Rule: Comision Nacional de Precios de Medicamentos y Dispositivos Medicos (CNPMDM); statistic 'p25'
     over basket DE, AU, BR, CA, CL, EC, ES, US, FR, GR, IN, IT, MX, NO, PA, PE, PT, GB; origin-country
     cap: False. Circular 03 de 2013 (art. 9): per-country simple averages, outliers removed, the 25th
@@ -99,7 +104,8 @@
   GB    thalassemia              $212k    [A]    used                
   IT    thalassemia              $225k    [A]    used                
   AE    thalassemia              unknown  [?]    no price known      
-  ERP result: $225k per patient-year list (p25 of 5 basket prices) = COP 922,500,000 at 4100 COP/USD [R]. Standard of care costs $18k/yr [A].
+  ERP result: $225k per patient-year list (p25 of 5 basket prices) = COP 922,500,000 at 4100 COP/USD
+  [R]. Standard of care costs $18k/yr [A].
       - US AQVESME: Agios management on the FDA-approval earnings call: 'addressable launch population'
       4,000 patients, price $425,000/yr. Not a published WAC.
       - US PYRUKYND: Agios Connecticut pricing disclosure 2025: WAC $25,760 per 56-tablet carton (28 days
@@ -112,16 +118,14 @@
       - GB thalassemia: Assumed 50% of US; NICE/NHS England confidential discounts not captured
       - IT thalassemia: Assumed 53% of US; Italy is the largest EU thalassemia market
       - AE thalassemia: Approved Mar 2026; MoHAP price not found. Relevant for the GCC-lowest clause.
-
-  5. LAUNCH ECONOMICS (partner view)
+  5. Launch economics (partner view)
     Transfer price to originator 65% of net sales [A]; logistics 8%; launch opex $450k/yr [A];
     pre-launch opex $120k/yr; upfront: INVIMA dossier (CTD adaptation, Spanish translation, GMP
     certification of sites, fees, local legal representative) $350k at filing; Pricing submission,
     IETS/HTA value dossier, PV and import set-up $150k at approval. Cost of capital 12%. Persistence 75%
     [A]. Budget-impact ceiling 0.3% of a $5.5bn drug market = $16m/yr public spend [A].
 
--- OUTPUT: 10-YEAR FORECAST ----------------------------------------------------------------------------
-
+-- OUTPUT: 10-YEAR FORECAST, Colombia ------------------------------------------------------------------
   Year  Eligible  Access  Uptake  Pts(succ)  Pts(exp)  Net $/pt  Sales(succ)  Sales(exp)  Cash(exp)  Cum cash
   ----  --------  ------  ------  ---------  --------  --------  -----------  ----------  ---------  --------
   2026        74      0%      0%          0         0     $208k           $0          $0         $0        $0
@@ -134,11 +138,11 @@
   2033        77     98%     87%          9         3     $189k        $1.7m       $643k     -$280k    -$2.1m
   2034        77     98%     95%         10         4     $184k        $1.8m       $691k     -$277k    -$2.4m
   2035        78     98%     99%         10         4     $178k        $1.8m       $697k     -$277k    -$2.6m
-  'succ' = if registered and every modelled payer route pays; 'exp' = probability-weighted (registration x coverage).
-    Note: ERP basket includes assumed EU prices (DE, FR, GB, IT); replace when Avanzanite lists in
+  'succ' = if registered and every modelled payer route pays; 'exp' = probability-weighted
+  (registration x coverage).
+    - Note: ERP basket includes assumed EU prices (DE, FR, GB, IT); replace when Avanzanite lists in
     Europe.
-
-  KEY METRICS
+  Key metrics
   Metric                                    Value                         
   ----------------------------------------  ------------------------------
   Label-eligible adults (range)             74 (29 - 177)                 
@@ -151,8 +155,7 @@
   P(registration) x P(paying route)         70% x 53% = 37%               
   Risk-adjusted NPV (exp) / NPV (succ)      -$1.5m / -$1.9m               
   Payback from first sale                   none within horizon           
-
-  VERDICT: DO NOT LAUNCH
+  Verdict: DO NOT LAUNCH
   Rule                          Value            Threshold  Result  Type
   ----------------------------  ---------------  ---------  ------  ----
   Risk-adjusted NPV (expected)  $-1.5m           >= $0m     FAIL    hard
@@ -162,7 +165,6 @@
   Patients on therapy at peak   10               >= 20      FAIL    soft
 
 -- COMPARE: Colombia vs Saudi Arabia -------------------------------------------------------------------
-
                                    Colombia                                          Saudi Arabia                                    
   -------------------------------  ------------------------------------------------  ------------------------------------------------
   Verdict                          DO NOT LAUNCH                                     LAUNCH                                          
@@ -178,8 +180,7 @@
   Risk-adjusted NPV                -$1.5m                                            $111.9m                                         
   Payback                          none in horizon                                   immediate                                       
   Expected bad debt                12%                                               0%                                              
-
-  WHY: multiplicative decomposition of peak-year net sales (CO / SA)
+  Why: multiplicative decomposition of peak-year net sales (CO / SA)
   Factor                                                 CO     SA  Ratio
   --------------------------------------------------  -----  -----  -----
   Label-eligible adults (peak year)                      77  3,807  0.02x
@@ -195,8 +196,7 @@
     line by line. Memo lines are not in the product: collections hit cash rather than sales, and timing
     hits the NPV through the years lost to registration and listing.
 
--- WHERE THE MODEL DISAGREES WITH AGIOS' OWN STATED NUMBERS --------------------------------------------
-
+-- WHERE THE MODEL DISAGREES WITH AGIOS' OWN STATED NUMBERS: Colombia ----------------------------------
   Patients
   Step                                               Patients  Grade
   -------------------------------------------------  --------  -----
@@ -214,7 +214,6 @@
       payers excluded
       - Choosing this therapy (peak competitive share): 18% vs standard of care and luspatercept
       - Still on therapy (persistence): x 75%; originator reports 75% 6-month persistency at home
-
   Price per patient-year
   Step                                                                               USD  Grade
   -------------------------------------------------------------------------------  -----  -----
@@ -224,7 +223,6 @@
       - Model: Colombia list price after external reference pricing: p25 of 5 basket prices
       - Model: blended net price at peak (tenders, formulary discounts, budget cap, FX): budget-impact
       ceiling not binding
-
   Revenue comparators
   View                                                                                   Per year
   -------------------------------------------------------------------------------------  --------
@@ -233,7 +231,6 @@
   Same logic on the model's eligible pool (74 x 65% x 20% x US price)                       $4.1m
   This model: peak net sales if reimbursed (2034)                                           $1.8m
   This model: peak net sales, probability-weighted                                          $697k
-
   Disagreements, and why
     1. Price. US $425,000 is not a reference for Colombia: the ERP rule (p25 of 5 basket prices) gives
     $225,000 list, and procurement discounts, early-access pricing and the budget ceiling bring the
@@ -241,12 +238,10 @@
     2. Geography. The originator has not filed here and lists no partner; the model agrees with that
     revealed preference and shows why: a 74-patient eligible pool, 37% probability of a paying route,
     INVIMA review of ~29 months and 12% expected bad debt.
-
   Agreements
     - Persistence: originator reports 75% at 6 months at home; the model uses 75% annual on-therapy.
 
--- WHERE THE MODEL DISAGREES WITH AGIOS' OWN STATED NUMBERS --------------------------------------------
-
+-- WHERE THE MODEL DISAGREES WITH AGIOS' OWN STATED NUMBERS: Saudi Arabia ------------------------------
   Patients
   Step                                               Patients  Grade
   -------------------------------------------------  --------  -----
@@ -272,7 +267,6 @@
       - Choosing this therapy (peak competitive share): 29% vs standard of care and exagamglogene
       autotemcel, luspatercept
       - Still on therapy (persistence): x 78%; originator reports 75% 6-month persistency at home
-
   Price per patient-year
   Step                                                                               USD  Grade
   -------------------------------------------------------------------------------  -----  -----
@@ -282,7 +276,6 @@
       - Model: Saudi Arabia list price after external reference pricing: median of 5 basket prices
       - Model: blended net price at peak (tenders, formulary discounts, budget cap, FX): budget-impact
       ceiling binding
-
   Revenue comparators
   View                                                                                   Per year
   -------------------------------------------------------------------------------------  --------
@@ -291,7 +284,6 @@
   Same logic on the model's eligible pool (3,587 x 65% x 20% x US price)                  $198.2m
   This model: peak net sales if reimbursed (2030)                                         $125.3m
   This model: peak net sales, probability-weighted                                         $99.0m
-
   Disagreements, and why
     1. Patient count. The 70,000 GCC figure is a headline prevalence (all ages, all thalassemia forms;
     carriers possibly included in regional registries). The label-eligible pool in Saudi Arabia is 3,587
@@ -309,14 +301,12 @@
     4. Budget impact. At the modelled patient numbers the public bill would exceed 1.0% of national drug
     spend from 2030; the model assumes the payer forces a price-volume agreement rather than paying list
     for everyone. Originator decks rarely model this.
-
   Agreements
     - Persistence: originator reports 75% at 6 months at home; the model uses 78% annual on-therapy.
     - Saudi Arabia was worth an approval-first strategy: the model's verdict and Agios' sequencing (SFDA
     before FDA, NewBridge partnership) agree.
     - NTDT is the larger patient segment and TDT the better-paying one; the model's segment shares rest
     on the same trial results Agios cites (ENERGIZE 42.3% vs 1.6%; ENERGIZE-T 30.4% vs 12.6%).
-
   Calibration
     - Originator-reported ex-US net revenue (EU + GCC combined): $12.3m across 2026Q1, 2026Q2, 2026Q3
     (Agios 10-Q Q1 2026 (rest of world $1,895k), 8-K Q2 2026 (ex-US $3.8m: 'anticipated demand in EU and

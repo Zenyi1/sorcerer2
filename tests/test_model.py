@@ -8,7 +8,8 @@ import math
 import unittest
 from contextlib import redirect_stdout
 
-from launchcast import cli
+from launchcast import cli, report
+import os, tempfile
 from launchcast.compare import decompose
 from launchcast.competition import segment_shares
 from launchcast.data import apply_overrides, load_asset, load_config, load_country
@@ -225,6 +226,37 @@ class CliTests(unittest.TestCase):
         self.assertIn("ENDARI", text)
         self.assertIn("EMMAUS' OWN STATED NUMBERS", text)
         self.assertIn("Revealed uptake", text)
+
+    def test_markdown_output_file(self):
+        with tempfile.TemporaryDirectory() as d:
+            path = os.path.join(d, "r.md")
+            buf = io.StringIO()
+            with redirect_stdout(buf):
+                rc = cli.main(["--country", "SA", "--vs", "CO", "run", "--no-sensitivity", "--out", path])
+            report.set_format("text")  # reset module state for other tests
+            self.assertEqual(rc, 0)
+            with open(path, encoding="utf-8") as fh:
+                md = fh.read()
+        self.assertTrue(md.startswith("# "))
+        self.assertIn("## SUMMARY", md)
+        self.assertIn("| Step | Factor | Patients | Grade |", md)
+        self.assertIn("### Verdict: LAUNCH", md)
+        self.assertNotIn("====", md)
+
+    def test_screen_command(self):
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            rc = cli.main(["screen", "--asset", "endari"])
+        self.assertEqual(rc, 0)
+        text = buf.getvalue()
+        self.assertIn("SCREEN:", text)
+        self.assertIn("Saudi Arabia", text)
+        self.assertIn("Colombia", text)
+        buf = io.StringIO()
+        with redirect_stdout(buf):
+            cli.main(["screen", "--asset", "mitapivat", "--json"])
+        rows = json.loads(buf.getvalue())
+        self.assertEqual([r["country"] for r in rows], ["SA", "CO"])  # ranked by rNPV
 
     def test_text_report_sections(self):
         buf = io.StringIO()

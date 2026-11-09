@@ -1,15 +1,15 @@
 ========================================================================================================
-  LAUNCHCAST  |  mitapivat (PYRUKYND / AQVESME)  |  Saudi Arabia (SA)  |  indication: SCD
+  LAUNCHCAST  |  mitapivat (PYRUKYND / AQVESME) in Saudi Arabia (SA), indication SCD
   Originator: Agios Pharmaceuticals (NASDAQ: AGIO). Deal: GCC distribution agreement (MOU-stage
   equivalent: originator supplies product, partner files, imports and commercializes) with NewBridge
   Pharmaceuticals, Dubai (2024).
   Perspective: launch partner P&L. Horizon: 2026-2035. Status here: not filed; file 2027.0, decision
   ~2027.8 (SFDA ~9 months), P(approval)=66%.
 ========================================================================================================
-  Evidence grades: [V] verified primary source  [R] reported/secondary  [C] originator's own figure  [A] our assumption  [O] command-line override  [M] model output
+  Evidence grades: [V] verified primary source, [R] reported/secondary, [C] originator's own figure,
+  [A] our assumption, [O] command-line override, [M] model output.
 
 -- COMPARE: Saudi Arabia vs Colombia -------------------------------------------------------------------
-
                                    Saudi Arabia                                      Colombia                                        
   -------------------------------  ------------------------------------------------  ------------------------------------------------
   Verdict                          LAUNCH                                            DO NOT LAUNCH                                   
@@ -25,8 +25,7 @@
   Risk-adjusted NPV                $58.9m                                            -$1.1m                                          
   Payback                          1 yr                                              none in horizon                                 
   Expected bad debt                0%                                                12%                                             
-
-  WHY: multiplicative decomposition of peak-year net sales (SA / CO)
+  Why: multiplicative decomposition of peak-year net sales (SA / CO)
   Factor                                                  SA     CO   Ratio
   --------------------------------------------------  ------  -----  ------
   Label-eligible adults (peak year)                   13,011    776  16.76x
@@ -42,8 +41,7 @@
     line by line. Memo lines are not in the product: collections hit cash rather than sales, and timing
     hits the NPV through the years lost to registration and listing.
 
--- OUTPUT: 10-YEAR FORECAST ----------------------------------------------------------------------------
-
+-- OUTPUT: 10-YEAR FORECAST, Colombia ------------------------------------------------------------------
   Year  Eligible  Access  Uptake  Pts(succ)  Pts(exp)  Net $/pt  Sales(succ)  Sales(exp)  Cash(exp)  Cum cash
   ----  --------  ------  ------  ---------  --------  --------  -----------  ----------  ---------  --------
   2026       740      0%      0%          0         0     $208k           $0          $0         $0        $0
@@ -56,11 +54,11 @@
   2033       771     98%     87%         24         6     $189k        $4.5m       $1.2m     -$155k    -$1.5m
   2034       776     98%     95%         26         7     $184k        $4.8m       $1.3m     -$150k    -$1.6m
   2035       781     98%     99%         27         7     $178k        $4.9m       $1.3m     -$150k    -$1.8m
-  'succ' = if registered and every modelled payer route pays; 'exp' = probability-weighted (registration x coverage).
-    Note: ERP basket includes assumed EU prices (DE, FR, GB, IT); replace when Avanzanite lists in
+  'succ' = if registered and every modelled payer route pays; 'exp' = probability-weighted
+  (registration x coverage).
+    - Note: ERP basket includes assumed EU prices (DE, FR, GB, IT); replace when Avanzanite lists in
     Europe.
-
-  KEY METRICS
+  Key metrics
   Metric                                    Value                         
   ----------------------------------------  ------------------------------
   Label-eligible adults (range)             740 (370 - 1,480)             
@@ -73,8 +71,7 @@
   P(registration) x P(paying route)         49% x 53% = 26%               
   Risk-adjusted NPV (exp) / NPV (succ)      -$1.1m / -$1.5m               
   Payback from first sale                   none within horizon           
-
-  VERDICT: DO NOT LAUNCH
+  Verdict: DO NOT LAUNCH
   Rule                          Value            Threshold  Result  Type
   ----------------------------  ---------------  ---------  ------  ----
   Risk-adjusted NPV (expected)  $-1.1m           >= $0m     FAIL    hard
