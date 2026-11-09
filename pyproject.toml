@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "launchcast"
+version = "0.1.0"
+description = "Terminal launch forecaster for in-licensed / MOU pharma assets: epidemiology, reimbursement, competition, reference pricing, rNPV, verdict."
+requires-python = ">=3.9"
+dependencies = []
+
+[project.optional-dependencies]
+narrate = ["anthropic>=0.80"]
+
+[project.scripts]
+launchcast = "launchcast.cli:main"
+
+[tool.setuptools]
+packages = ["launchcast"]

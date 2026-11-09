@@ -1,0 +1,84 @@
+========================================================================================================
+  LAUNCHCAST  |  mitapivat (PYRUKYND / AQVESME)  |  Saudi Arabia (SA)  |  indication: SCD
+  Originator: Agios Pharmaceuticals (NASDAQ: AGIO). Deal: GCC distribution agreement (MOU-stage
+  equivalent: originator supplies product, partner files, imports and commercializes) with NewBridge
+  Pharmaceuticals, Dubai (2024).
+  Perspective: launch partner P&L. Horizon: 2026-2035. Status here: not filed; file 2027.0, decision
+  ~2027.8 (SFDA ~9 months), P(approval)=66%.
+========================================================================================================
+  Evidence grades: [V] verified primary source  [R] reported/secondary  [C] originator's own figure  [A] our assumption  [O] command-line override  [M] model output
+
+-- COMPARE: Saudi Arabia vs Colombia -------------------------------------------------------------------
+
+                                   Saudi Arabia                                      Colombia                                        
+  -------------------------------  ------------------------------------------------  ------------------------------------------------
+  Verdict                          LAUNCH                                            DO NOT LAUNCH                                   
+  Status                           not filed; file 2027.0, decision ~2027.8 (SFDA ~  not filed; file 2027.0, decision ~2029.4 (INVIMA
+  Label-eligible adults            12,258                                            740                                             
+  P(registered) x P(paying route)  50%                                               26%                                             
+  First reimbursed sale            2028.8                                            2030.9                                          
+  List price (ERP)                 $234k                                             $225k                                           
+  Net price at peak                $145k                                             $184k                                           
+  Peak share                       15.7%                                             4.8%                                            
+  Patients at peak (succ)          873                                               26                                              
+  Peak net sales (succ / exp)      $126.2m / $66.5m                                  $4.8m / $1.3m                                   
+  Risk-adjusted NPV                $58.9m                                            -$1.1m                                          
+  Payback                          1 yr                                              none in horizon                                 
+  Expected bad debt                0%                                                12%                                             
+
+  WHY: multiplicative decomposition of peak-year net sales (SA / CO)
+  Factor                                                  SA     CO   Ratio
+  --------------------------------------------------  ------  -----  ------
+  Label-eligible adults (peak year)                   13,011    776  16.76x
+  Share with a paying route at peak                    95.1%  98.0%   0.97x
+  Peak competitive share                               15.7%   4.8%   3.25x
+  Uptake reached by peak year                          57.3%  95.4%   0.60x
+  Persistence on therapy                               78.0%  75.0%   1.04x
+  Net price per patient-year                           $145k  $184k   0.79x
+  = Peak net sales (success case)                      $126m    $5m  26.10x
+  memo: collected share (1 - bad debt)                 99.7%  88.0%   1.13x
+  memo: years from decision to first reimbursed sale     2.8    4.9        
+    The factor ratios above the '=' line multiply to the peak-sales ratio, so the gap can be attributed
+    line by line. Memo lines are not in the product: collections hit cash rather than sales, and timing
+    hits the NPV through the years lost to registration and listing.
+
+-- OUTPUT: 10-YEAR FORECAST ----------------------------------------------------------------------------
+
+  Year  Eligible  Access  Uptake  Pts(succ)  Pts(exp)  Net $/pt  Sales(succ)  Sales(exp)  Cash(exp)  Cum cash
+  ----  --------  ------  ------  ---------  --------  --------  -----------  ----------  ---------  --------
+  2026       740      0%      0%          0         0     $208k           $0          $0         $0        $0
+  2027       744      0%      0%          0         0     $208k           $0          $0     -$470k    -$470k
+  2028       749      0%      0%          0         0     $208k           $0          $0     -$120k    -$590k
+  2029       753      0%      5%          0         0     $225k         $32k        $16k     -$209k    -$799k
+  2030       758      0%     16%          2         1     $224k        $383k       $187k     -$170k    -$969k
+  2031       762      3%     38%          2         1     $218k        $429k       $191k     -$177k    -$1.1m
+  2032       767     71%     67%         14         4     $196k        $2.7m       $733k     -$173k    -$1.3m
+  2033       771     98%     87%         24         6     $189k        $4.5m       $1.2m     -$155k    -$1.5m
+  2034       776     98%     95%         26         7     $184k        $4.8m       $1.3m     -$150k    -$1.6m
+  2035       781     98%     99%         27         7     $178k        $4.9m       $1.3m     -$150k    -$1.8m
+  'succ' = if registered and every modelled payer route pays; 'exp' = probability-weighted (registration x coverage).
+    Note: ERP basket includes assumed EU prices (DE, FR, GB, IT); replace when Avanzanite lists in
+    Europe.
+
+  KEY METRICS
+  Metric                                    Value                         
+  ----------------------------------------  ------------------------------
+  Label-eligible adults (range)             740 (370 - 1,480)             
+  Peak competitive share                    4.8%                          
+  List price (ERP) / net at peak            $225k / $184k per patient-year
+  First sale / first reimbursed sale        2029 / 2030.9                 
+  Patients on therapy at peak (succ / exp)  26 / 7 in 2034                
+  Peak net sales (succ / exp)               $4.8m / $1.3m                 
+  Cumulative net sales, horizon (exp)       $4.9m                         
+  P(registration) x P(paying route)         49% x 53% = 26%               
+  Risk-adjusted NPV (exp) / NPV (succ)      -$1.1m / -$1.5m               
+  Payback from first sale                   none within horizon           
+
+  VERDICT: DO NOT LAUNCH
+  Rule                          Value            Threshold  Result  Type
+  ----------------------------  ---------------  ---------  ------  ----
+  Risk-adjusted NPV (expected)  $-1.1m           >= $0m     FAIL    hard
+  Peak net sales if reimbursed  $4.8m            >= $3m     pass    hard
+  P(registered and reimbursed)  26%              >= 50%     FAIL    hard
+  Payback from first sale       none in horizon  <= 5 yr    FAIL    soft
+  Patients on therapy at peak   26               >= 20      pass    soft

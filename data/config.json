@@ -1,0 +1,33 @@
+{
+  "analysis_start_year": 2026,
+  "horizon_years": 10,
+  "default_asset": "mitapivat",
+  "default_country": "SA",
+  "default_comparator": "CO",
+  "decision_rules": {
+    "min_rnpv_usd": 0,
+    "min_peak_net_sales_usd": 3000000,
+    "max_payback_years_from_first_sale": 5,
+    "min_p_reimbursement": 0.5,
+    "min_peak_patients": 20,
+    "note": "A country is LAUNCH when every rule passes, CONDITIONAL when only soft rules fail (payback or peak patients), DO NOT LAUNCH when rNPV, peak sales or reimbursement probability fail."
+  },
+  "sensitivity": {
+    "parameters": [
+      {"path": "epidemiology.<ind>.disease_prevalence_per_1000_adults.value", "label": "Disease prevalence", "low_mult": 0.6, "high_mult": 1.3},
+      {"path": "epidemiology.<ind>.in_specialist_care_share.value", "label": "Share in specialist care", "low_mult": 0.75, "high_mult": 1.2},
+      {"path": "epidemiology.<ind>.label_eligible_share.value", "label": "Label-eligible share", "low_mult": 0.75, "high_mult": 1.2},
+      {"path": "payers.*.p_coverage", "label": "Reimbursement probability", "low_mult": 0.6, "high_mult": 1.15},
+      {"path": "payers.*.months_to_coverage", "label": "Months to reimbursement", "low_add": 12, "high_add": -6},
+      {"path": "pricing.statistic", "label": "ERP statistic (min vs p75)", "low_set": "min", "high_set": "p75"},
+      {"path": "payers.*.net_price_factor", "label": "Net price (discounts)", "low_mult": 0.8, "high_mult": 1.08},
+      {"path": "competition_weights.price", "label": "Payer price sensitivity", "low_mult": 1.8, "high_mult": 0.5},
+      {"path": "commercial.persistence_annual.value", "label": "Persistence", "low_mult": 0.8, "high_mult": 1.1},
+      {"path": "payers.*.dso_days", "label": "Days sales outstanding", "low_add": 150, "high_add": -45},
+      {"path": "payers.*.bad_debt", "label": "Bad debt", "low_add": 0.10, "high_add": -0.05},
+      {"path": "commercial.launch_opex_usd_per_year.value", "label": "Launch opex", "low_mult": 1.4, "high_mult": 0.8},
+      {"path": "commercial.transfer_price_share_of_net.value", "label": "Transfer price to originator", "low_mult": 1.15, "high_mult": 0.85},
+      {"path": "budget_ceiling_share_of_pharma_market.value", "label": "Budget-impact ceiling", "low_mult": 0.5, "high_mult": 3.0}
+    ]
+  }
+}

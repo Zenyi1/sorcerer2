@@ -1,0 +1,385 @@
+{
+  "id": "mitapivat",
+  "name": "mitapivat (PYRUKYND / AQVESME)",
+  "originator": "Agios Pharmaceuticals (NASDAQ: AGIO)",
+  "deal": {
+    "type": "GCC distribution agreement (MOU-stage equivalent: originator supplies product, partner files, imports and commercializes)",
+    "partner": "NewBridge Pharmaceuticals, Dubai",
+    "signed": 2024,
+    "territory": [
+      "SA",
+      "AE",
+      "KW",
+      "QA",
+      "OM",
+      "BH"
+    ],
+    "status": "reported",
+    "source": "Agios Q3 2024 results / earnings call: 'Distribution agreement secured with NewBridge Pharmaceuticals for the GCC region'"
+  },
+  "indication": {
+    "id": "thalassemia",
+    "label": "Adults with anemia due to non-transfusion-dependent or transfusion-dependent alpha- or beta-thalassemia",
+    "segments": {
+      "TDT": "Transfusion-dependent thalassemia (regular red-cell transfusions)",
+      "NTDT": "Non-transfusion-dependent thalassemia with Hb <= 10 g/dL"
+    },
+    "dosing": "100 mg orally twice daily (730 tablets/year)",
+    "mechanism": "Pyruvate kinase activator; first oral disease-modifying therapy across alpha and beta thalassemia"
+  },
+  "regulatory_status": {
+    "SA": {
+      "status": "approved",
+      "date": "2025-08-04",
+      "pathway": "SFDA Breakthrough Medicines Program (first approval worldwide in thalassemia)",
+      "status_evidence": "verified",
+      "source": "SFDA news 18705, https://sfda.gov.sa/en/news/18705 ; Agios PR 2025-08-04, https://investor.agios.com/news-releases/news-release-details/agios-pyrukyndr-mitapivat-approved-adults-thalassemia-saudi"
+    },
+    "AE": {
+      "status": "approved",
+      "date": "2026-03",
+      "status_evidence": "reported",
+      "source": "Thalassaemia International Federation update; Agios Q2 2026 deck lists KSA and UAE approvals"
+    },
+    "US": {
+      "status": "approved",
+      "date": "2025-12-23",
+      "brand": "AQVESME",
+      "note": "Boxed warning for hepatocellular injury; REMS; separate brand from PYRUKYND (PK deficiency)",
+      "status_evidence": "verified",
+      "source": "https://www.drugs.com/history/aqvesme.html ; https://www.hcplive.com/view/fda-approves-mitapivat-aqvesme-for-non-transfusion-dependent-alpha--and-beta-thalassemia"
+    },
+    "EU": {
+      "status": "approved",
+      "date": "2026-05-22",
+      "partner": "Avanzanite Bioscience (EEA, UK, Switzerland)",
+      "status_evidence": "reported",
+      "source": "CHMP positive opinion 2025-10-17, https://www.businesswire.com/news/home/20251017844062/en/ ; EC decision reported 2026-05-22"
+    },
+    "CO": {
+      "status": "not_filed",
+      "status_evidence": "assumption",
+      "source": "No INVIMA filing found; Colombia is not in Agios' or its partners' disclosed geographies"
+    }
+  },
+  "clinical": {
+    "TDT": {
+      "trial": "ENERGIZE-T (phase 3, n=258, 2:1, 48 weeks)",
+      "primary_endpoint": ">=50% reduction in transfused RBC units over any 12 consecutive weeks",
+      "response_drug": 0.304,
+      "response_placebo": 0.126,
+      "status": "verified",
+      "source": "Agios ASH 2024 release, https://www.biospace.com/press-releases/agios-presents-positive-results-from-phase-3-energize-t-study-of-mitapivat-at-ash-2024-and-provides-regulatory-update-on-mitapivat"
+    },
+    "NTDT": {
+      "trial": "ENERGIZE (phase 3, n=194, 2:1, 24 weeks)",
+      "primary_endpoint": "Hb increase >=1.0 g/dL (weeks 12-24)",
+      "response_drug": 0.423,
+      "response_placebo": 0.016,
+      "status": "reported",
+      "source": "Agios top-line release Jan 2024; figures as reported in company materials (not re-verified from the primary publication in this session)"
+    },
+    "safety": {
+      "summary": "Hepatocellular injury in 2/301 mitapivat-treated patients across ENERGIZE/ENERGIZE-T led to discontinuation; US label carries a boxed warning and REMS; SFDA label lists insomnia and headache as common AEs",
+      "status": "verified"
+    }
+  },
+  "reference_prices": [
+    {
+      "country": "US",
+      "indication": "thalassemia",
+      "brand": "AQVESME",
+      "annual_usd": 425000,
+      "status": "company_stated",
+      "source": "Agios management on the FDA-approval earnings call: 'addressable launch population' 4,000 patients, price $425,000/yr. Not a published WAC."
+    },
+    {
+      "country": "US",
+      "indication": "PK deficiency",
+      "brand": "PYRUKYND",
+      "annual_usd": 335700,
+      "status": "verified",
+      "source": "Agios Connecticut pricing disclosure 2025: WAC $25,760 per 56-tablet carton (28 days at BID) -> 13.04 cartons/yr, https://agios.com/wp-content/uploads/2025/01/Agios_CT_Pricing_Sheet_2025.pdf",
+      "use_in_basket": false,
+      "note": "Same molecule, different indication and brand; shown for context, excluded from the basket by default"
+    },
+    {
+      "country": "DE",
+      "indication": "thalassemia",
+      "annual_usd": 255000,
+      "status": "assumption",
+      "source": "Avanzanite EU launch pricing not yet public. Assumed 60% of US company-stated price, the typical EU/US ratio for orphan small molecules. Replace with Lauer-Taxe price when listed."
+    },
+    {
+      "country": "FR",
+      "indication": "thalassemia",
+      "annual_usd": 234000,
+      "status": "assumption",
+      "source": "Assumed 55% of US; replace with JO price after CEPS negotiation"
+    },
+    {
+      "country": "GB",
+      "indication": "thalassemia",
+      "annual_usd": 212000,
+      "status": "assumption",
+      "source": "Assumed 50% of US; NICE/NHS England confidential discounts not captured"
+    },
+    {
+      "country": "IT",
+      "indication": "thalassemia",
+      "annual_usd": 225000,
+      "status": "assumption",
+      "source": "Assumed 53% of US; Italy is the largest EU thalassemia market"
+    },
+    {
+      "country": "AE",
+      "indication": "thalassemia",
+      "annual_usd": null,
+      "status": "unknown",
+      "source": "Approved Mar 2026; MoHAP price not found. Relevant for the GCC-lowest clause."
+    }
+  ],
+  "competitors": {
+    "TDT": [
+      {
+        "id": "soc",
+        "name": "Standard of care only (transfusion + iron chelation)",
+        "efficacy": 0.0,
+        "convenience": 0.3,
+        "safety": 0.8,
+        "annual_price_usd": 40000,
+        "availability": {
+          "SA": "available",
+          "CO": "available"
+        },
+        "status": "verified"
+      },
+      {
+        "id": "mitapivat",
+        "name": "mitapivat (oral BID)",
+        "efficacy": 0.45,
+        "convenience": 1.0,
+        "safety": 0.65,
+        "annual_price_usd": null,
+        "availability": {
+          "SA": "available",
+          "CO": "available"
+        },
+        "note": "Efficacy score from 30.4% vs 12.6% transfusion-reduction response (+18 pts absolute, similar to luspatercept's +17 pts in BELIEVE); safety reflects liver monitoring / US boxed warning; price filled from the country ERP result"
+      },
+      {
+        "id": "luspatercept",
+        "name": "luspatercept (Reblozyl, SC every 3 weeks)",
+        "efficacy": 0.45,
+        "convenience": 0.5,
+        "safety": 0.8,
+        "annual_price_usd": 150000,
+        "availability": {
+          "SA": "limited",
+          "CO": "limited"
+        },
+        "status": "reported",
+        "source": "FDA approval for TDT beta-thal 2019 (BELIEVE: 21.4% vs 4.5% >=33% transfusion reduction); US WAC $3,441/25 mg vial at launch; CADTH annual CAD 114-152k. Saudi: named-patient and a BMS Middle East real-world study (NCT07215975, Jizan site); no SFDA price found. Colombia: INVIMA registration not confirmed."
+      },
+      {
+        "id": "exacel",
+        "name": "exagamglogene autotemcel (Casgevy, one-time gene editing)",
+        "efficacy": 0.95,
+        "convenience": 0.4,
+        "safety": 0.6,
+        "annual_price_usd": 2200000,
+        "availability": {
+          "SA": "capacity_limited",
+          "CO": "none"
+        },
+        "status": "verified",
+        "capacity_share_cap": 0.03,
+        "source": "SFDA approval Jan 2024 for SCD and TDT >=12y via Breakthrough Medicines Program; first authorized centre MNGHA Riyadh, https://investors.vrtx.com/news-releases/news-release-details/vertex-announces-approval-first-crisprcas9-gene-edited-therapy"
+      }
+    ],
+    "NTDT": [
+      {
+        "id": "soc",
+        "name": "Watchful waiting / occasional transfusion / off-label hydroxyurea",
+        "efficacy": 0.0,
+        "convenience": 0.7,
+        "safety": 0.9,
+        "annual_price_usd": 8000,
+        "availability": {
+          "SA": "available",
+          "CO": "available"
+        },
+        "status": "verified"
+      },
+      {
+        "id": "mitapivat",
+        "name": "mitapivat (oral BID)",
+        "efficacy": 0.6,
+        "convenience": 1.0,
+        "safety": 0.65,
+        "annual_price_usd": null,
+        "availability": {
+          "SA": "available",
+          "CO": "available"
+        },
+        "note": "Efficacy score from 42.3% vs 1.6% Hb response (+41 pts absolute)"
+      },
+      {
+        "id": "luspatercept",
+        "name": "luspatercept (Reblozyl, EU label for NTDT beta-thal only)",
+        "efficacy": 0.6,
+        "convenience": 0.5,
+        "safety": 0.8,
+        "annual_price_usd": 150000,
+        "availability": {
+          "SA": "limited",
+          "CO": "none"
+        },
+        "status": "reported",
+        "source": "EU extension to NTDT beta-thalassemia 2023 (BEYOND: 77% vs 0% Hb >=1 g/dL); not FDA approved for NTDT; alpha-thalassemia not covered"
+      }
+    ]
+  },
+  "uptake": {
+    "years_to_peak": {
+      "value": 5,
+      "status": "assumption",
+      "source": "Orphan oral therapy with established treatment centres"
+    },
+    "status": "assumption"
+  },
+  "biotech_view": {
+    "label": "Agios' own stated numbers",
+    "gcc_thalassemia_patients": {
+      "value": 70000,
+      "status": "company_stated",
+      "source": "Agios Q3 2024 earnings call: 'the GCC region is home to approximately 70,000 patients with thalassemia'"
+    },
+    "gcc_population_share_SA": {
+      "value": 0.58,
+      "status": "reported",
+      "source": "GCC population ~60.5m (2024); Saudi Arabia 35.3m = 58%. Used to allocate the GCC figure to Saudi Arabia; the Eastern Province burden argues for an even higher share"
+    },
+    "us_diagnosed_adults": {
+      "value": 6000,
+      "status": "company_stated",
+      "source": "Agios: ~6,000 US adults with thalassemia"
+    },
+    "us_launch_addressable_share": {
+      "value": 0.65,
+      "status": "company_stated",
+      "source": "Agios: initial US launch targets ~65% (~4,000) of diagnosed adults"
+    },
+    "us_price_usd": {
+      "value": 425000,
+      "status": "company_stated",
+      "source": "Agios earnings call at FDA approval"
+    },
+    "global_peak_sales_usd": {
+      "value": 1000000000,
+      "status": "company_stated",
+      "source": "Agios: 'potential to deliver $1bn global peak-year sales across PKD and thalassemia'"
+    },
+    "persistency_6m": {
+      "value": 0.75,
+      "status": "company_stated",
+      "source": "Agios Q3 2026 call"
+    },
+    "saudi_access_statement": {
+      "value": "Early patient access case-by-case; national procurement agreements expected over the next couple of years",
+      "status": "company_stated",
+      "source": "Agios Q3 2025 results, https://investor.agios.com/news-releases/news-release-details/agios-reports-third-quarter-2025-financial-results-and-provides"
+    },
+    "ex_us_quarterly_revenue_usd": {
+      "value": {
+        "2026Q1": 1900000,
+        "2026Q2": 3800000,
+        "2026Q3": 6600000
+      },
+      "status": "verified",
+      "source": "Agios 10-Q Q1 2026 (rest of world $1,895k), 8-K Q2 2026 (ex-US $3.8m: 'anticipated demand in EU and continued early demand in the GCC'), Q3 2026 call ($6.6m ex-US). EU + GCC combined; Saudi share not disclosed."
+    },
+    "implied_us_penetration_at_peak": {
+      "value": 0.2,
+      "status": "assumption",
+      "source": "$1bn global peak across PKD + thalassemia against a $1.7bn US thalassemia launch TAM (4,000 x $425k) implies roughly 20% net penetration; used only to build the 'biotech-style' comparator"
+    }
+  },
+  "pipeline_indications": {
+    "SCD": {
+      "label": "Sickle cell disease (RISE UP phase 3)",
+      "p_approval": 0.7,
+      "approval_year": 2027,
+      "status": "reported",
+      "source": "FDA sNDA under review; PDUFA extended to 2027-02-01 after a major amendment (Agios Q3 2026 call). SFDA filing would follow.",
+      "segments_note": "Reuses the country SCD epidemiology block; competitor set is SoC (hydroxyurea), voxelotor withdrawn 2024, crizanlizumab limited, exa-cel capacity-limited in Saudi Arabia",
+      "competitors": {
+        "TDT": [
+          {
+            "id": "soc",
+            "name": "Hydroxyurea + chronic transfusion",
+            "efficacy": 0.0,
+            "convenience": 0.6,
+            "safety": 0.8,
+            "annual_price_usd": 15000,
+            "availability": {
+              "SA": "available",
+              "CO": "available"
+            }
+          },
+          {
+            "id": "mitapivat",
+            "name": "mitapivat (oral BID)",
+            "efficacy": 0.45,
+            "convenience": 1.0,
+            "safety": 0.65,
+            "annual_price_usd": null,
+            "availability": {
+              "SA": "available",
+              "CO": "available"
+            }
+          },
+          {
+            "id": "exacel",
+            "name": "Casgevy",
+            "efficacy": 0.95,
+            "convenience": 0.4,
+            "safety": 0.6,
+            "annual_price_usd": 2200000,
+            "availability": {
+              "SA": "capacity_limited",
+              "CO": "none"
+            },
+            "capacity_share_cap": 0.02
+          }
+        ],
+        "NTDT": [
+          {
+            "id": "soc",
+            "name": "Hydroxyurea",
+            "efficacy": 0.0,
+            "convenience": 0.8,
+            "safety": 0.85,
+            "annual_price_usd": 3000,
+            "availability": {
+              "SA": "available",
+              "CO": "available"
+            }
+          },
+          {
+            "id": "mitapivat",
+            "name": "mitapivat (oral BID)",
+            "efficacy": 0.45,
+            "convenience": 1.0,
+            "safety": 0.65,
+            "annual_price_usd": null,
+            "availability": {
+              "SA": "available",
+              "CO": "available"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

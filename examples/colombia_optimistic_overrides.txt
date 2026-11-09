@@ -1,0 +1,52 @@
+========================================================================================================
+  LAUNCHCAST  |  mitapivat (PYRUKYND / AQVESME)  |  Colombia (CO)  |  indication: thalassemia
+  Originator: Agios Pharmaceuticals (NASDAQ: AGIO). Deal: GCC distribution agreement (MOU-stage
+  equivalent: originator supplies product, partner files, imports and commercializes) with NewBridge
+  Pharmaceuticals, Dubai (2024).
+  Perspective: launch partner P&L. Horizon: 2026-2035. Status here: not filed; file 2027.0, decision
+  ~2029.4 (INVIMA ~29 months), P(approval)=70%.
+========================================================================================================
+  Evidence grades: [V] verified primary source  [R] reported/secondary  [C] originator's own figure  [A] our assumption  [O] command-line override  [M] model output
+
+-- OUTPUT: 10-YEAR FORECAST ----------------------------------------------------------------------------
+
+  Year  Eligible  Access  Uptake  Pts(succ)  Pts(exp)  Net $/pt  Sales(succ)  Sales(exp)  Cash(exp)  Cum cash
+  ----  --------  ------  ------  ---------  --------  --------  -----------  ----------  ---------  --------
+  2026       736      0%      0%          0         0     $208k           $0          $0         $0        $0
+  2027       741      0%      0%          0         0     $208k           $0          $0     -$470k    -$470k
+  2028       745      0%      0%          0         0     $208k           $0          $0     -$120k    -$590k
+  2029       750      0%      5%          0         0     $225k         $32k        $22k     -$299k    -$889k
+  2030       754      0%     16%          2         1     $224k        $381k       $267k     -$243k    -$1.1m
+  2031       759      3%     38%          3         1     $218k        $613k       $323k     -$234k    -$1.4m
+  2032       763     71%     67%         50        19     $196k        $9.7m       $3.8m      $354k    -$1.0m
+  2033       768     98%     87%         90        34     $189k       $17.0m       $6.4m      $811k    -$201k
+  2034       772     98%     95%        100        38     $175k       $17.5m       $6.6m      $842k     $641k
+  2035       777     98%     99%        103        39     $169k       $17.5m       $6.6m      $842k     $1.5m
+  'succ' = if registered and every modelled payer route pays; 'exp' = probability-weighted (registration x coverage).
+    Note: Budget-impact ceiling ($16m/yr public spend) binds in 2034-2035; modelled as a price-volume
+    agreement that lowers the effective net price.
+    Note: ERP basket includes assumed EU prices (DE, FR, GB, IT); replace when Avanzanite lists in
+    Europe.
+
+  KEY METRICS
+  Metric                                    Value                         
+  ----------------------------------------  ------------------------------
+  Label-eligible adults (range)             736 (442 - 957)               
+  Peak competitive share                    18.4%                         
+  List price (ERP) / net at peak            $225k / $175k per patient-year
+  First sale / first reimbursed sale        2029 / 2030.9                 
+  Patients on therapy at peak (succ / exp)  100 / 39 in 2034              
+  Peak net sales (succ / exp)               $17.5m / $6.6m                
+  Cumulative net sales, horizon (exp)       $24.0m                        
+  P(registration) x P(paying route)         70% x 53% = 37%               
+  Risk-adjusted NPV (exp) / NPV (succ)      $165k / $2.4m                 
+  Payback from first sale                   6 years                       
+
+  VERDICT: DO NOT LAUNCH
+  Rule                          Value   Threshold  Result  Type
+  ----------------------------  ------  ---------  ------  ----
+  Risk-adjusted NPV (expected)  $0.2m   >= $0m     pass    hard
+  Peak net sales if reimbursed  $17.5m  >= $3m     pass    hard
+  P(registered and reimbursed)  37%     >= 50%     FAIL    hard
+  Payback from first sale       6 yr    <= 5 yr    FAIL    soft
+  Patients on therapy at peak   100     >= 20      pass    soft

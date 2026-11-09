@@ -1,0 +1,319 @@
+{
+  "code": "CO",
+  "name": "Colombia",
+  "currency": "COP",
+  "fx_per_usd": {
+    "value": 4100,
+    "status": "reported",
+    "source": "Approx. 2025 average COP/USD; refresh with --live (frankfurter.app / ECB) before relying on it"
+  },
+  "fx_annual_drift_vs_usd": {
+    "value": -0.03,
+    "status": "assumption",
+    "source": "Regulated prices are set in COP; long-run COP depreciation erodes USD revenue ~3%/yr"
+  },
+  "population": {
+    "total": {
+      "value": 52695952,
+      "year": 2024,
+      "status": "reported",
+      "source": "DANE population projection 2024"
+    },
+    "nationals": {
+      "value": 52695952,
+      "year": 2024,
+      "status": "reported",
+      "source": "Whole population is the base (no national/expat split relevant)"
+    },
+    "adult_share_nationals": {
+      "value": 0.78,
+      "status": "reported",
+      "source": "DANE: ~22% aged 0-14"
+    },
+    "annual_growth": {
+      "value": 0.006,
+      "status": "reported",
+      "source": "DANE projections"
+    },
+    "epidemiology_base": "nationals_adults",
+    "base_note": "Hemoglobinopathies cluster in Afro-Colombian populations of the Pacific and Caribbean coasts (mostly HbS). Thalassemia is predominantly trait/minor of Mediterranean origin in the Andean region; beta-thalassemia major is rare."
+  },
+  "macro": {
+    "gdp_per_capita_usd": {
+      "value": 7000,
+      "year": 2024,
+      "status": "reported",
+      "source": "IMF WEO 2024 approx."
+    },
+    "health_exp_per_capita_usd": {
+      "value": 600,
+      "year": 2022,
+      "status": "reported",
+      "source": "WHO GHED approx."
+    },
+    "oop_share_of_health_exp": {
+      "value": 0.14,
+      "year": 2022,
+      "status": "reported",
+      "source": "WHO GHED approx."
+    },
+    "pharma_market_usd": {
+      "value": 5500000000,
+      "year": 2024,
+      "status": "assumption",
+      "source": "Market reports ~USD 5-6bn; used only for the budget-impact ceiling"
+    }
+  },
+  "health_system": {
+    "summary": "Near-universal insurance (SGSSS) through EPS insurers in contributory and subsidized regimes, financed by ADRES. Orphan-disease drugs outside the benefit plan were funded through 'presupuestos maximos' (2020-2025) and are moving to centralized purchase (Resolution 542 of 2025). The system is in a liquidity crisis: EPS debts reached COP 58 trillion in 2025 (+26.5% y/y) and debts to drug suppliers COP 3.8 trillion (+33%); several large EPS are under government intervention.",
+    "sources": [
+      "Consultorsalud, Colombia apuesta por la compra centralizada de medicamentos para enfermedades huerfanas (Res. 542/2025), https://consultorsalud.com/?p=311748",
+      "Asi Vamos en Salud via Consultorsalud, deficit en presupuestos maximos 50-55% for 2025, https://consultorsalud.com/deficit-presupuestos-maximos-medicamentos/",
+      "Bloomberg Linea, Deuda de las EPS llego a COP 58 billones en 2025, https://www.bloomberglinea.com/latinoamerica/colombia/deuda-de-las-eps-en-colombia-llego-a-cop58-billones-en-2025-un-alza-de-265-en-un-ano/",
+      "Vanguardia, Crisis en la Nueva EPS: pacientes con enfermedades huerfanas en riesgo (Oct 2025)"
+    ]
+  },
+  "regulatory": {
+    "agency": "INVIMA",
+    "pathway": "Full sanitary registration (registro sanitario); no formal reliance clock for FDA/EMA-approved molecules",
+    "typical_review_months": {
+      "value": 29,
+      "status": "reported",
+      "source": "AFIDRO/AmCham/FIFARMA roadmap: new-registration approvals 22 months (2024) -> 29 months (2025); ANDI cites 18-24 months at end-2024, https://consultorsalud.com/modernizacion-del-invima-afidro-amcham-fifarma/"
+    },
+    "p_approval_given_fda_ema": {
+      "value": 0.7,
+      "status": "reported",
+      "source": "Same roadmap: ~50% of orphan-disease new-molecule applications denied in 2025 (industry figure); FDA/EMA-approved product with phase 3 data assumed better than average"
+    },
+    "filing_lag_years": 1
+  },
+  "pricing": {
+    "authority": "Comision Nacional de Precios de Medicamentos y Dispositivos Medicos (CNPMDM)",
+    "method": "external_reference",
+    "statistic": "p25",
+    "origin_country_cap": false,
+    "gcc_lowest_clause": false,
+    "basket": [
+      "DE",
+      "AU",
+      "BR",
+      "CA",
+      "CL",
+      "EC",
+      "ES",
+      "US",
+      "FR",
+      "GR",
+      "IN",
+      "IT",
+      "MX",
+      "NO",
+      "PA",
+      "PE",
+      "PT",
+      "GB"
+    ],
+    "months_to_price_after_approval": {
+      "value": 12,
+      "status": "assumption",
+      "source": "Price can be sold free on registration; direct control (precio maximo) follows via the next Circular once the product is in a concentrated 'mercado relevante'"
+    },
+    "reprice_after_years": 1,
+    "reprice_cut": {
+      "value": 0.0,
+      "status": "assumption",
+      "source": "Annual price updates under Circular 19/2024 methodology; COP devaluation handled separately"
+    },
+    "status": "reported",
+    "notes": "Circular 03 de 2013 (art. 9): per-country simple averages, outliers removed, the 25th percentile is the international reference price (PRI). Circular 18 de 2024 (Diario Oficial 52.697, 13-Mar-2024) replaced it: adds a national reference price (PRN, P90 of SISMED prices when 2+ suppliers) and a Bancolombia case study describes the base as min(P20 international, national average). For a single-supplier orphan product the PRN does not exist, so the international percentile governs. P25 is used as base; P20 in sensitivity. The newest, cheapest source per country is preferred.",
+    "sources": [
+      "Circular 03 de 2013, https://www.minsalud.gov.co/sites/rid/Lists/BibliotecaDigital/RIDE/DE/DIJ/circular-03-de-2013.pdf",
+      "Circular 18 de 2024 (INVIMA normograma PDF), https://normograma.invima.gov.co/normograma/docs/pdf/circular_cnpmd_0018_2024.pdf",
+      "Consultorsalud, Instauran regimen de control de precios - Circular 18 de 2024, https://consultorsalud.com/instauran-regimen-de-control-de-precios-a-medicamentos-circular-18-de-2024/",
+      "Bancolombia, Estrategias de precios de medicamentos en Colombia, https://www.bancolombia.com/empresas/capital-inteligente/actualidad-economica-sectorial/estrategias-precios-medicamentos-colombia"
+    ]
+  },
+  "payers": [
+    {
+      "id": "eps_contributivo",
+      "name": "Contributory regime EPS, orphan drug funded via ADRES (presupuestos maximos / centralized purchase)",
+      "share_of_patients": 0.45,
+      "p_coverage": 0.6,
+      "months_to_coverage": 15,
+      "net_price_factor": 0.92,
+      "dso_days": 270,
+      "bad_debt": 0.1,
+      "public": true,
+      "note": "MIPRES prescription is immediate after registration, but payment depends on ADRES transfers that were 50-55% short in 2025"
+    },
+    {
+      "id": "eps_subsidiado",
+      "name": "Subsidized regime EPS (same funding route, weaker insurers)",
+      "share_of_patients": 0.48,
+      "p_coverage": 0.5,
+      "months_to_coverage": 18,
+      "net_price_factor": 0.92,
+      "dso_days": 330,
+      "bad_debt": 0.15,
+      "public": true,
+      "note": "Nueva EPS and other intervened insurers concentrate here"
+    },
+    {
+      "id": "private",
+      "name": "Prepaid medicine / private pay",
+      "share_of_patients": 0.05,
+      "p_coverage": 0.4,
+      "months_to_coverage": 6,
+      "net_price_factor": 1.0,
+      "dso_days": 60,
+      "bad_debt": 0.02,
+      "public": false
+    },
+    {
+      "id": "uncovered",
+      "name": "No payer",
+      "share_of_patients": 0.02,
+      "p_coverage": 0.0,
+      "months_to_coverage": 0,
+      "net_price_factor": 0.0,
+      "dso_days": 0,
+      "bad_debt": 0.0,
+      "public": false
+    }
+  ],
+  "early_access_share": {
+    "value": 0.003,
+    "status": "assumption",
+    "source": "Import of an unregistered orphan drug as 'medicamento vital no disponible' is possible but rare and litigation-driven (tutelas); a handful of patients at most.",
+    "note": "Share of label-eligible patients treated through early access (named-patient / hospital budget) before any payer listing; paid at list price."
+  },
+  "budget_ceiling_share_of_pharma_market": {
+    "value": 0.003,
+    "status": "assumption",
+    "source": "Orphan budget under acute strain; a new product above ~0.3% of drug spend would be rationed"
+  },
+  "epidemiology": {
+    "thalassemia": {
+      "disease_prevalence_per_1000_adults": {
+        "value": 0.005,
+        "low": 0.002,
+        "high": 0.012,
+        "status": "assumption",
+        "source": "No national figure exists: 'la ausencia de un programa nacional de tamizaje no permite determinar su prevalencia' (Archivos de Medicina 2019, https://www.redalyc.org/journal/2738/273859249013/273859249013.pdf). Regional studies (Cartagena, Buenaventura, Cali, San Andres, Bogota 2009-2020) find thalassemia mostly as trait. Central case = ~200 adults with beta-thalassemia major/intermedia nationally, bounded by the 88,426-person national orphan registry (June 2024).",
+        "note": "This is the single weakest input in the Colombia case and is flagged in sensitivity"
+      },
+      "alpha_thal_hbh_multiplier": {
+        "value": 1.05,
+        "status": "assumption",
+        "source": "HbH disease rare"
+      },
+      "diagnosed_share": {
+        "value": 0.7,
+        "status": "assumption",
+        "source": "No newborn or premarital hemoglobinopathy screening; diagnosis is clinical"
+      },
+      "in_specialist_care_share": {
+        "value": 0.75,
+        "status": "assumption",
+        "source": "Orphan-disease law (Ley 1392/2010) and mandatory notification (Sivigila event 342) route diagnosed patients to care"
+      },
+      "label_eligible_share": {
+        "value": 0.65,
+        "status": "assumption",
+        "source": "Adults with TDT or NTDT Hb <=10 g/dL"
+      },
+      "tdt_share_of_eligible": {
+        "value": 0.55,
+        "status": "assumption",
+        "source": "Diagnosed cases skew severe"
+      },
+      "soc_annual_cost_usd": {
+        "value": 18000,
+        "status": "assumption",
+        "source": "Transfusion + generic deferasirox at Colombian prices"
+      }
+    },
+    "SCD": {
+      "disease_prevalence_per_1000_adults": {
+        "value": 0.1,
+        "low": 0.05,
+        "high": 0.2,
+        "status": "assumption",
+        "source": "Afro-Colombians ~10% of population; SCD incidence ~1% in Afro-descendant population (Novartis Colombia); ~4,000-8,000 patients nationally is the range quoted by patient groups. Not verified against Sivigila counts."
+      },
+      "alpha_thal_hbh_multiplier": {
+        "value": 1.0,
+        "status": "verified",
+        "source": "n/a"
+      },
+      "diagnosed_share": {
+        "value": 0.6,
+        "status": "assumption",
+        "source": "No universal newborn screening"
+      },
+      "in_specialist_care_share": {
+        "value": 0.6,
+        "status": "assumption",
+        "source": "Pacific-coast access gaps"
+      },
+      "label_eligible_share": {
+        "value": 0.5,
+        "status": "assumption",
+        "source": "Adults with symptomatic anemia; pending label"
+      },
+      "tdt_share_of_eligible": {
+        "value": 0.15,
+        "status": "assumption",
+        "source": "Chronic transfusion minority"
+      },
+      "soc_annual_cost_usd": {
+        "value": 6000,
+        "status": "assumption",
+        "source": "Hydroxyurea, admissions at Colombian prices"
+      }
+    }
+  },
+  "competition_weights": {
+    "efficacy": 2.5,
+    "convenience": 1.0,
+    "safety": 1.0,
+    "price": 1.6,
+    "status": "assumption",
+    "note": "Price weight doubled vs Saudi Arabia: cash-constrained payer; IETS cost-effectiveness culture"
+  },
+  "commercial": {
+    "perspective_note": "Launch-partner P&L: local registration holder/importer pays a transfer price to the originator.",
+    "upfront_costs_usd": [
+      {
+        "label": "INVIMA dossier (CTD adaptation, Spanish translation, GMP certification of sites, fees, local legal representative)",
+        "amount": 350000,
+        "timing": "filing"
+      },
+      {
+        "label": "Pricing submission, IETS/HTA value dossier, PV and import set-up",
+        "amount": 150000,
+        "timing": "approval"
+      }
+    ],
+    "prelaunch_opex_usd_per_year": 120000,
+    "launch_opex_usd_per_year": {
+      "value": 450000,
+      "status": "assumption",
+      "source": "2 FTE (medical + access), PV, patient-support programme"
+    },
+    "opex_ramp_years": 1,
+    "transfer_price_share_of_net": {
+      "value": 0.65,
+      "status": "assumption",
+      "source": "Same partner economics as Saudi Arabia for comparability"
+    },
+    "logistics_share_of_net": 0.08,
+    "cost_of_capital": 0.12,
+    "persistence_annual": {
+      "value": 0.75,
+      "status": "assumption",
+      "source": "Slightly below US due to supply interruptions in the Colombian channel"
+    }
+  }
+}
