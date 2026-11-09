@@ -263,8 +263,8 @@ class CliTests(unittest.TestCase):
         with redirect_stdout(buf):
             cli.main(["--country", "SA", "--vs", "CO", "run", "--no-sensitivity"])
         text = buf.getvalue()
-        for needle in ("EPIDEMIOLOGY", "REIMBURSEMENT", "COMPETING THERAPIES", "PRICING REFERENCES",
-                       "10-YEAR FORECAST", "VERDICT: LAUNCH", "COMPARE: Saudi Arabia vs Colombia",
+        for needle in ("SUMMARY", "Epidemiology and prevalence", "Reimbursement and market access", "Competing therapies",
+                       "Pricing references", "10-YEAR FORECAST", "Verdict: LAUNCH", "COMPARE: Saudi Arabia vs Colombia",
                        "WHERE THE MODEL DISAGREES", "BOTTOM LINE"):
             self.assertIn(needle, text)
 

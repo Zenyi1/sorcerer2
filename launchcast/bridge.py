@@ -49,7 +49,7 @@ def build_bridge(fc: Forecast) -> dict:
         steps.append({"label": f"Originator: {fc.indication} patients in {claim['region']}", "value": float(claim["patients"]),
                       "status": claim.get("status", "company_stated"), "note": claim.get("source", "")})
         steps.append({"label": f"Allocated to {country['name']} (share {share:.0%})", "value": implied, "status": "reported",
-                      "note": (claim.get("shares_source", "") + " " + claim.get("basis_note", "")).strip()})
+                      "note": ". ".join(x.strip().rstrip(".") for x in (claim.get("shares_source", ""), claim.get("basis_note", "")) if x) + "."})
         steps.append({"label": "Model: prevalent adults with disease", "value": fc.funnel.prevalent, "status": status_of(epi["disease_prevalence_per_1000_adults"]),
                       "note": f"{fc.funnel.prevalent/implied:.0%} of the allocated originator figure. Anchor: {anchor}."})
         naive_patients = implied

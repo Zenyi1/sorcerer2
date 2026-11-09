@@ -201,7 +201,7 @@ The factor ratios above the '=' line multiply to the peak-sales ratio, so the ga
 | Still on therapy (persistence) | 779 | [M] |
 
 - Originator: thalassemia patients in GCC: Agios Q3 2024 earnings call: 'the GCC region is home to approximately 70,000 patients with thalassemia'
-- Allocated to Saudi Arabia (share 58%): GCC population ~60.5m (2024); Saudi Arabia 35.3m = 58%. Used to allocate the GCC figure to Saudi Arabia; the Eastern Province burden argues for an even higher share All ages, all thalassemia forms; carriers possibly included in regional registries
+- Allocated to Saudi Arabia (share 58%): GCC population ~60.5m (2024); Saudi Arabia 35.3m = 58%. Used to allocate the GCC figure to Saudi Arabia; the Eastern Province burden argues for an even higher share. All ages, all thalassemia forms; carriers possibly included in regional registries.
 - Model: prevalent adults with disease: 25% of the allocated originator figure. Anchor: Saudi national premarital screening data (0.7 beta-thalassemia disease per 1,000 adults screened, 2011-2015).
 - With a paying route at peak (2030, if reimbursed): 95% of eligible; uncovered and not-yet-listed payers excluded
 - Choosing this therapy (peak competitive share): 29% vs standard of care and exagamglogene autotemcel, luspatercept
