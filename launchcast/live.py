@@ -10,9 +10,6 @@ import json
 import urllib.request
 from typing import Callable
 
-ISO3 = {"SA": "SAU", "CO": "COL"}
-
-
 def _get(url: str, timeout: float = 8.0):
     req = urllib.request.Request(url, headers={"User-Agent": "launchcast/0.1"})
     with urllib.request.urlopen(req, timeout=timeout) as resp:
@@ -21,7 +18,7 @@ def _get(url: str, timeout: float = 8.0):
 
 def refresh_country(country: dict, log: Callable[[str], None]) -> dict:
     code = country["code"]
-    iso3 = ISO3.get(code)
+    iso3 = country.get("iso3")
     if iso3:
         try:
             data = _get(f"https://api.worldbank.org/v2/country/{iso3}/indicator/SP.POP.TOTL?format=json&per_page=5&mrnev=1")

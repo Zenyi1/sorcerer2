@@ -29,11 +29,11 @@ def load_config() -> dict:
 
 
 def list_countries() -> list[str]:
-    return sorted(p.stem for p in (DATA_DIR / "countries").glob("*.json"))
+    return sorted(p.stem for p in (DATA_DIR / "countries").glob("*.json") if not p.stem.startswith("_"))
 
 
 def list_assets() -> list[str]:
-    return sorted(p.stem for p in (DATA_DIR / "assets").glob("*.json"))
+    return sorted(p.stem for p in (DATA_DIR / "assets").glob("*.json") if not p.stem.startswith("_"))
 
 
 def load_country(code: str) -> dict:

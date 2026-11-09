@@ -105,8 +105,9 @@ def render_inputs(fc: Forecast) -> str:
     rows = [[s.label, s.factor, num(s.value), tag(s.status)] for s in fc.funnel.steps]
     out.append(table(["Step", "Factor", "Patients", "Grade"], rows, "lllr"))
     f = fc.funnel
+    mix_txt = ", ".join(f"{k} {pct(x)}" for k, x in f.segment_mix.items()) if len(f.segment_mix) > 1 else "single segment"
     out.append(f"  Range on prevalence alone: {num(f.eligible_low)} - {num(f.eligible_high)} eligible adults; "
-               f"TDT share of eligible {pct(f.tdt_share)}.")
+               f"segment mix: {mix_txt}.")
     for s in fc.funnel.steps:
         if s.source:
             out.append(wrap(f"- {s.label}: {s.source}", indent=6))
@@ -144,9 +145,8 @@ def render_inputs(fc: Forecast) -> str:
                          money(o.price_usd, 0) if o.price_usd else "-",
                          pct(o.share, 1) if o.availability != "none" else "n/a", "cap" if o.capped else ""])
         out.append(table(["Seg", "Therapy", "Here", "Eff", "Conv", "Safe", "Price/yr", "Share", ""], rows, "lllrrrrrl"))
-    out.append(f"  Blended peak share of label-eligible patients = {pct(fc.peak_share, 1)} "
-               f"(TDT {pct(fc.shares.get('TDT').asset_share if 'TDT' in fc.shares else 0,1)} x {pct(f.tdt_share)} + "
-               f"NTDT {pct(fc.shares.get('NTDT').asset_share if 'NTDT' in fc.shares else 0,1)} x {pct(1-f.tdt_share)}).")
+    blend = " + ".join(f"{sg} {pct(fc.shares[sg].asset_share, 1)} x {pct(f.segment_mix.get(sg, 1.0))}" for sg in fc.shares)
+    out.append(f"  Blended peak share of label-eligible patients = {pct(fc.peak_share, 1)} ({blend}).")
     for seg_name, comps in (a["competitors"] if fc.indication == a["indication"]["id"] else a["pipeline_indications"][fc.indication]["competitors"]).items():
         for comp in comps:
             if comp.get("source"):

@@ -16,7 +16,7 @@ from .report import hr, money, render_bridge, render_compare, render_forecast, r
 from .sensitivity import tornado
 
 
-COMMANDS = ["run", "inputs", "forecast", "compare", "disagree", "sensitivity", "list"]
+COMMANDS = ["run", "inputs", "forecast", "compare", "disagree", "sensitivity", "list", "validate"]
 
 
 def _parser() -> argparse.ArgumentParser:
@@ -36,7 +36,7 @@ def _parser() -> argparse.ArgumentParser:
     p.add_argument("--json", action="store_true", help="machine-readable output instead of the report")
     p.add_argument("--no-sensitivity", action="store_true", help="skip the tornado (faster)")
     p.add_argument("command", nargs="?", default="run", choices=COMMANDS,
-                   help="run = full report (default); inputs | forecast | compare | disagree | sensitivity | list")
+                   help="run = full report (default); inputs | forecast | compare | disagree | sensitivity | list | validate")
     return p
 
 
@@ -97,13 +97,28 @@ def main(argv: list[str] | None = None) -> int:
     command = args.command
 
     if command == "list":
-        print("Countries:", ", ".join(list_countries()))
-        print("Assets:   ", ", ".join(list_assets()))
+        print("Countries:", ", ".join(f"{c} ({load_country(c)['name']})" for c in list_countries()))
+        print("Assets:   ", ", ".join(f"{a} ({load_asset(a)['name']})" for a in list_assets()))
         return 0
+    if command == "validate":
+        from .validate import validate_asset, validate_country
+        countries = {c: load_country(c) for c in list_countries()}
+        problems = []
+        for c in countries.values():
+            problems += validate_country(c)
+        for a_id in list_assets():
+            problems += validate_asset(load_asset(a_id), countries)
+        for pr in problems:
+            print("  -", pr)
+        print(f"{len(countries)} countries, {len(list_assets())} assets: " + ("OK" if not problems else f"{len(problems)} problem(s)"))
+        return 0 if not problems else 1
 
     interactive = args.country is None and sys.stdin.isatty() and not args.json
     if args.country is None:
         if interactive:
+            if args.asset is None and len(list_assets()) > 1:
+                names = [f"{a} - {load_asset(a)['name']}" for a in list_assets()]
+                args.asset = _choose("Choose the asset:", names).split(" - ")[0]
             countries = list_countries()
             names = [f"{c} - {load_country(c)['name']}" for c in countries]
             pick = _choose("Choose the country to evaluate:", names)
@@ -122,6 +137,14 @@ def main(argv: list[str] | None = None) -> int:
         args.vs = None
 
     asset, country, comparator = _load(args, config)
+    from .validate import validate_asset, validate_country
+    problems = validate_country(country) + (validate_country(comparator) if comparator else []) + \
+        validate_asset(asset, {c["code"]: c for c in [country] + ([comparator] if comparator else [])})
+    if problems:
+        print("Input files have problems; fix them or run `launchcast validate`:", file=sys.stderr)
+        for pr in problems:
+            print("  -", pr, file=sys.stderr)
+        return 2
     include_assumed = not args.exclude_assumed_prices
     fc = run_forecast(country, asset, config, args.indication, include_assumed)
     verdict, rules = evaluate(fc.metrics, config["decision_rules"])

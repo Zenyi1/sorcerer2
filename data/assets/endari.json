@@ -1,0 +1,83 @@
+{
+  "id": "endari",
+  "name": "L-glutamine oral powder (ENDARI)",
+  "originator": "Emmaus Life Sciences (NASDAQ: EMMA)",
+  "deal": {
+    "type": "Exclusive MENA commercialization partnership: partner bears all commercialization costs and pays milestones plus a high double-digit royalty on net sales",
+    "partner": "taiba Healthcare (Kuwait)",
+    "signed": 2019,
+    "territory": ["SA", "AE", "KW", "QA", "OM", "BH", "EG", "JO", "LB", "IQ"],
+    "status": "verified",
+    "source": "Emmaus PR Feb 2019, https://www.prnewswire.com/news-releases/emmaus-life-sciences-partners-with-taiba-healthcare-to-commercialize-endari-for-sickle-cell-disease-in-the-middle-east-and-north-africa-region-300788776.html ; first early-access purchase order Dec 2019"
+  },
+  "indication": {
+    "id": "SCD",
+    "label": "Reduce the acute complications of sickle cell disease in adults and children aged 5 years and older",
+    "segments": {"SCD": "Patients with sickle cell disease and recurrent vaso-occlusive crises"},
+    "dosing": "5-15 g (1-3 packets of 5 g) orally twice daily by body weight; adults >= 65 kg take 3 packets twice daily",
+    "mechanism": "Oral amino acid thought to reduce oxidative stress in sickle red cells",
+    "label_eligible_share_override": {"value": 0.50, "status": "assumption",
+      "source": "Phase 3 enrolled patients with >= 2 crises in the prior year; roughly half of adult SCD patients in care meet that in Saudi cohorts (the Arab-Indian haplotype in the Eastern Province is milder), fewer in Colombia's Pacific-coast population with poorer access. One value used for both.",
+      "criteria": "adult, >= 2 crises in the prior year"}
+  },
+  "regulatory_status": {
+    "US": {"status": "approved", "date": "2017-07-07", "status_evidence": "verified", "source": "FDA approval, first SCD therapy in ~20 years"},
+    "SA": {"status": "filed", "date": "2021-05", "expected_decision": "2027-06", "p_approval": 0.75, "status_evidence": "verified",
+           "note": "SFDA accepted a priority-review request in April 2020 and the marketing authorization application in May 2021; a 2025 Emmaus release still lists the application as awaiting final SFDA action while NUPCO has granted market exclusivity and an early-access programme supplies GCC patients. A four-year-old dossier is modelled with a 75% probability and a mid-2027 decision.",
+           "source": "https://ir.emmausmedical.com/news-events/press-releases/detail/165/emmaus-life-science-reports-grant-of-endari-market ; https://www.prnewswire.com/news-releases/emmaus-life-sciences-announces-submission-of-marketing-authorization-application-for-endari-to-the-saudi-food--drug-authority-301300106.html"},
+    "KW": {"status": "approved", "status_evidence": "reported", "source": "Emmaus 2025 release lists Kuwait, Qatar, UAE, Bahrain and Oman as approved"},
+    "QA": {"status": "approved", "status_evidence": "reported", "source": "as above"},
+    "AE": {"status": "approved", "status_evidence": "reported", "source": "as above"},
+    "BH": {"status": "approved", "status_evidence": "reported", "source": "as above"},
+    "OM": {"status": "approved", "status_evidence": "reported", "source": "as above"},
+    "EU": {"status": "withdrawn", "status_evidence": "reported", "source": "EMA marketing authorization application withdrawn in 2019"},
+    "CO": {"status": "not_filed", "status_evidence": "assumption", "source": "No INVIMA filing found; Colombia is outside the taiba territory and Emmaus lists no LatAm partner"}
+  },
+  "clinical": {
+    "SCD": {"trial": "Phase 3 (n=230, 2:1, 48 weeks)", "primary_endpoint": "Number of sickle cell crises over 48 weeks",
+            "result": "Median 3 crises vs 4 on placebo (25% fewer); fewer hospitalisations (median 2 vs 3) and shorter stays", "status": "verified",
+            "source": "Niihara et al., NEJM 2018; FDA label"},
+    "safety": {"summary": "Constipation, nausea, headache, abdominal pain; no boxed warning", "status": "verified"}
+  },
+  "reference_prices": [
+    {"country": "US", "indication": "SCD", "brand": "ENDARI", "annual_usd": 42000, "status": "reported",
+     "source": "Emmaus operational update: WAC $1,154 per 60-packet box from Q1 2020 (up from $1,110). An adult >= 65 kg takes 6 packets/day = 36.5 boxes/yr = ~$42k; ICER's 2020 draft modelled ~$24k/yr at label-average dosing. US generic L-glutamine (ANI) launched July 2024, so the US list price is a ceiling, not a floor.",
+     "note": "Only reference available: no EU approval (MAA withdrawn 2019); GCC prices not published"}
+  ],
+  "competitors": {
+    "SCD": [
+      {"id": "soc", "name": "Hydroxyurea + supportive care (folate, analgesia, transfusion as needed)", "efficacy": 0.0, "convenience": 0.8, "safety": 0.8, "annual_price_usd": 3000,
+       "availability": {"SA": "available", "CO": "available"}, "status": "verified", "source": "Generic hydroxyurea is standard of care in both countries"},
+      {"id": "endari", "name": "L-glutamine (ENDARI, 6 packets of powder a day)", "efficacy": 0.20, "convenience": 0.55, "safety": 0.9, "annual_price_usd": null,
+       "availability": {"SA": "available", "CO": "available"},
+       "note": "Efficacy score from a 25% reduction in median crises (3 vs 4) on top of hydroxyurea in two thirds of patients; convenience penalised for 6 powder sachets a day"},
+      {"id": "crizanlizumab", "name": "crizanlizumab (Adakveo, monthly IV)", "efficacy": 0.25, "convenience": 0.5, "safety": 0.8, "annual_price_usd": 100000,
+       "availability": {"SA": "limited", "CO": "limited"}, "status": "reported",
+       "source": "FDA 2019 on SUSTAIN (45% fewer crises); confirmatory STAND trial failed 2023 and the EU authorisation was revoked, so use is limited where still registered"},
+      {"id": "exacel", "name": "exagamglogene autotemcel (Casgevy, one-time gene editing)", "efficacy": 0.95, "convenience": 0.4, "safety": 0.6, "annual_price_usd": 2200000,
+       "availability": {"SA": "capacity_limited", "CO": "none"}, "capacity_share_cap": 0.01, "status": "verified",
+       "source": "SFDA approval Jan 2024 for SCD >= 12y; one authorised centre so far"}
+    ]
+  },
+  "uptake": {
+    "years_to_peak": {"value": 5, "status": "assumption", "source": "Oral therapy, established SCD centres"},
+    "home_market_observed_share": {"value": 0.01, "status": "reported",
+      "source": "Emmaus net revenue has run at roughly $25-30m a year against ~100,000 US SCD patients, i.e. on the order of 1% of prevalent patients on therapy seven years after approval"}
+  },
+  "biotech_view": {
+    "label": "Emmaus' own stated numbers",
+    "home_country": "US",
+    "home_price_usd": {"value": 42000, "status": "reported", "source": "Derived from the published WAC per box and adult dosing (see reference_prices)"},
+    "regional_patient_claims": [],
+    "access_statements": {
+      "SA": {"value": "Endari received market exclusivity in the Kingdom of Saudi Arabia through NUPCO; the marketing authorization application is awaiting final action by the SFDA; Emmaus continues to supply GCC patients through its early access program",
+             "status": "company_stated", "source": "Emmaus press release, 2025"}
+    },
+    "reported_revenue": null,
+    "agreements": {
+      "SA": ["Emmaus and taiba put their Gulf effort into Saudi Arabia (priority review, NUPCO exclusivity, early access); the model also finds it the only one of the two countries worth a dedicated effort."],
+      "*": []
+    }
+  },
+  "pipeline_indications": {}
+}

@@ -21,16 +21,21 @@ class Funnel:
     eligible: float = 0.0
     eligible_low: float = 0.0
     eligible_high: float = 0.0
-    tdt_share: float = 0.5
+    segment_mix: dict = field(default_factory=dict)
     base_population: float = 0.0
     prevalent: float = 0.0
     diagnosed: float = 0.0
     in_care: float = 0.0
 
 
-def patient_funnel(country: dict, indication: str) -> Funnel:
+def patient_funnel(country: dict, indication: str, asset: dict | None = None) -> Funnel:
+    """Build the funnel. The asset may override the label-eligible share (eligibility is a label
+    property, not a country property) via indication.label_eligible_share_override."""
     pop = country["population"]
     epi = country["epidemiology"][indication]
+    elig_node = epi["label_eligible_share"]
+    if asset and asset.get("indication", {}).get("id") == indication and asset["indication"].get("label_eligible_share_override"):
+        elig_node = asset["indication"]["label_eligible_share_override"]
     nationals = float(v(pop["nationals"]))
     adult_share = float(v(pop["adult_share_nationals"]))
     base = nationals * adult_share
@@ -46,7 +51,7 @@ def patient_funnel(country: dict, indication: str) -> Funnel:
     alpha = float(v(epi["alpha_thal_hbh_multiplier"]))
     dx = float(v(epi["diagnosed_share"]))
     care = float(v(epi["in_specialist_care_share"]))
-    elig = float(v(epi["label_eligible_share"]))
+    elig = float(v(elig_node))
 
     f = Funnel()
     f.base_population = base
@@ -67,10 +72,15 @@ def patient_funnel(country: dict, indication: str) -> Funnel:
     f.steps.append(FunnelStep("Followed in a specialist centre", f"x {care:.0%}", in_care,
                               status_of(epi["in_specialist_care_share"]), source_of(epi["in_specialist_care_share"])))
     eligible = in_care * elig
-    f.steps.append(FunnelStep("Label-eligible (adult, anemic, not cured)", f"x {elig:.0%}", eligible,
-                              status_of(epi["label_eligible_share"]), source_of(epi["label_eligible_share"])))
+    criteria = elig_node.get("criteria", "") if isinstance(elig_node, dict) else ""
+    f.steps.append(FunnelStep("Label-eligible" + (f" ({criteria})" if criteria else ""), f"x {elig:.0%}", eligible,
+                              status_of(elig_node), source_of(elig_node)))
     f.eligible = eligible
     f.eligible_low = eligible * (prev_lo / prev_c) if prev_c else 0.0
     f.eligible_high = eligible * (prev_hi / prev_c) if prev_c else 0.0
-    f.tdt_share = float(v(epi["tdt_share_of_eligible"]))
+    mix = epi.get("segment_mix", {})
+    meta = {"status", "source", "note", "_comment"}
+    mix = {k: float(v(x)) for k, x in mix.items() if k not in meta} if isinstance(mix, dict) else {}
+    total = sum(mix.values())
+    f.segment_mix = {k: x / total for k, x in mix.items()} if total else {}
     return f

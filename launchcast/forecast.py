@@ -110,6 +110,15 @@ def run_forecast(country: dict, asset: dict, config: dict, indication: Optional[
         p_reg = 1.0
         already = True
         approval_label = f"approved {status['date']} ({status.get('pathway', country['regulatory']['agency'])})"
+    elif pipeline is None and status.get("status") == "filed":
+        # Dossier already with the regulator: no filing cost, decision at the expected date.
+        filing_t = None
+        approval_t = (_year_from_date(status["expected_decision"]) - start) if status.get("expected_decision") else review_years
+        approval_t = max(approval_t, 0.1)
+        p_reg = float(status.get("p_approval", v(reg["p_approval_given_fda_ema"])))
+        already = False
+        approval_label = (f"filed {status.get('date', '')}; decision expected ~{start + approval_t:.1f} "
+                          f"({country['regulatory']['agency']}), P(approval)={p_reg:.0%}")
     else:
         filing_t = float(reg.get("filing_lag_years", 0))
         if pipeline is not None:
@@ -130,7 +139,7 @@ def run_forecast(country: dict, asset: dict, config: dict, indication: Optional[
     timeline = Timeline(start, already, filing_t, approval_t, pricing_t, coverage_t, p_reg, approval_label)
 
     # --- inputs ---------------------------------------------------------------------------
-    funnel = patient_funnel(country, indication)
+    funnel = patient_funnel(country, indication, asset)
     erp = erp_price(country["pricing"], asset["reference_prices"], origin_country="US",
                     include_assumed=include_assumed_prices, indication=main_ind)
     list_price = erp.list_price_usd
@@ -145,8 +154,18 @@ def run_forecast(country: dict, asset: dict, config: dict, indication: Optional[
         seg = segment_shares(comps, code, weights, asset["id"], asset_net_for_share)
         seg.segment = seg_name
         shares[seg_name] = seg
-    tdt = funnel.tdt_share
-    peak_share = tdt * shares.get("TDT", SegmentShares("TDT")).asset_share + (1 - tdt) * shares.get("NTDT", SegmentShares("NTDT")).asset_share
+    # Blend segment shares by the country's eligible mix. A single-segment asset needs no mix.
+    seg_ids = list(competitors.keys())
+    if len(seg_ids) == 1:
+        mix = {seg_ids[0]: 1.0}
+    else:
+        missing = [sg for sg in seg_ids if sg not in funnel.segment_mix]
+        if missing:
+            raise KeyError(f"{country['name']} epidemiology.{indication}.segment_mix lacks segment(s) {missing} used by {asset['id']}")
+        tot = sum(funnel.segment_mix[sg] for sg in seg_ids)
+        mix = {sg: funnel.segment_mix[sg] / tot for sg in seg_ids}
+    funnel.segment_mix = mix
+    peak_share = sum(mix[sg] * shares[sg].asset_share for sg in seg_ids)
 
     # --- economics --------------------------------------------------------------------------
     com = country["commercial"]
@@ -241,7 +260,7 @@ def run_forecast(country: dict, asset: dict, config: dict, indication: Optional[
                 if yr == i:
                     upfront_s += item["amount"]; upfront_e += item["amount"] * p_reg
         opex_s = opex_e = 0.0
-        if filing_t is not None and filing_t <= t < approval_t:
+        if (filing_t if filing_t is not None else 0.0) <= t < approval_t:
             opex_s += prelaunch_opex; opex_e += prelaunch_opex
         if t >= approval_t:
             ramp = min(1.0, 0.6 + 0.4 * max(0.0, (t - approval_t) / max(ramp_years, 1e-9))) if ramp_years > 0 else 1.0

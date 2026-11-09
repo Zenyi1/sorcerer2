@@ -21,7 +21,7 @@ $1bn global peak across indications, quarterly ex-US revenue) to disagree with.
 
 ```bash
 git clone <this repo> && cd sorcerer2
-python3 -m launchcast                      # interactive: pick the country, then the comparator
+python3 -m launchcast                      # interactive: pick the asset, the country, then the comparator
 python3 -m launchcast --country SA --vs CO # Saudi Arabia vs Colombia, full report
 ```
 
@@ -43,10 +43,12 @@ launchcast --country SA --vs CO
 | `... disagree` | Bridge from the originator's stated numbers to the model's, with the disagreements spelled out |
 | `... sensitivity` | One-at-a-time tornado on risk-adjusted NPV; marks drivers that flip the verdict |
 | `... list` | Countries and assets available |
+| `... validate` | Schema-check every data file; exit 1 with plain-language problems if any |
 
 Useful flags:
 
 ```bash
+--asset endari                   # second bundled asset (Emmaus' Endari, sickle cell)
 --indication SCD                 # what-if for a pipeline indication (sickle cell, PDUFA Feb 2027)
 --set payers.*.bad_debt=0        # override any input by dotted path; '*' fans out over lists
 --set vs:payers.0.p_coverage=0.9 # prefix 'vs:' targets the comparator, 'asset:' the asset file
@@ -139,24 +141,43 @@ and at the modelled volumes the public bill would exceed 1% of national drug spe
 answers with a price-volume agreement. Where it agrees: Saudi Arabia deserved an approval-first
 strategy, persistence (~75-78%), and the segment logic from the ENERGIZE trials.
 
+## Adding an asset or a country
+
+The engine has no asset in it. `data/assets/mitapivat.json` and `data/assets/endari.json` are the two
+bundled examples; `data/assets/_template.json` and `data/countries/_template.json` are annotated
+starting points. Steps:
+
+1. Copy the template to `data/assets/<id>.json`. Fill the deal, label and segments, regulatory status
+   per country (`approved` with a date, `filed` with an expected decision and probability, or
+   `not_filed`), the reference price table, the competitor set per segment with availability in each
+   country, and whatever the originator has said in public (`biotech_view`).
+2. Make sure each country file has an `epidemiology.<indication id>` block. If the asset has more than
+   one segment, the block's `segment_mix` must use the same segment ids. If eligibility is a property of
+   the label rather than the country, set `indication.label_eligible_share_override` on the asset.
+3. Run `launchcast validate`; it lists every missing or inconsistent field in plain words.
+4. Run `launchcast --asset <id> --country SA --vs CO`.
+
+The second bundled asset shows the range: Endari is a low-priced, modest-efficacy oral therapy with a
+royalty-style MENA deal, filed with the SFDA since 2021 and still pending, and with seven years of
+revealed uptake at home (about 1% of US patients). The bridge section uses that revealed uptake to
+flag the model's own share assumption as optimistic.
+
 ## Data and evidence grades
 
 Everything lives in `data/`:
 
 - `countries/SA.json`, `countries/CO.json`: population, macro, health system, regulator, pricing
   rule and basket, payer routes, epidemiology per indication, competition weights, commercial costs.
-- `assets/mitapivat.json`: deal, label, regulatory status by country, trial results, reference
-  prices, competitors per segment with per-country availability, the originator's own stated numbers
-  (`biotech_view`), and pipeline indications.
+- `assets/mitapivat.json`, `assets/endari.json`: deal, label and segments, regulatory status by
+  country, trial results, reference prices, competitors per segment with per-country availability, the
+  originator's own stated numbers (`biotech_view`), revealed home-market uptake, pipeline indications.
+- `assets/_template.json`, `countries/_template.json`: annotated templates (ignored by the CLI).
 - `config.json`: horizon, decision rules, sensitivity ranges.
 
 Every input node is `{"value": ..., "status": ..., "source": ...}` with status one of `verified`
 (primary source read), `reported` (secondary source), `company_stated` (originator's figure),
 `assumption` (ours, with rationale), `unknown` (excluded). The report prints the grade next to
 every number as `[V] [R] [C] [A] [?]`, and `[O]` for a command-line override.
-
-Add a country by copying a country file; add an asset by copying the asset file. The engine needs
-an epidemiology block for the asset's indication in each country it is run against.
 
 ## Tests
 

@@ -19,7 +19,7 @@
   Diagnosed                                     x 90%                      9,197         [A]
   Followed in a specialist centre               x 65%                      5,978         [A]
   Label-eligible (adult, anemic, not cured)     x 60%                      3,587         [A]
-  Range on prevalence alone: 2,050 - 4,612 eligible adults; TDT share of eligible 45%.
+  Range on prevalence alone: 2,050 - 4,612 eligible adults; segment mix: TDT 45%, NTDT 55%.
       - Adults in the epidemiology base: GASTAT 2024: Saudis 55.6% of population
       - Prevalent disease (adults): National premarital screening 2011-2015, n=1,230,582: beta-thalassemia
       13.6/1000 (12.9 trait, 0.7 disease); JEGH 2019
@@ -201,29 +201,30 @@
 -- WHERE THE MODEL DISAGREES WITH AGIOS' OWN STATED NUMBERS --------------------------------------------
 
   Patients
-  Step                                                            Patients  Grade
-  --------------------------------------------------------------  --------  -----
-  Originator: thalassemia patients in the GCC                       70,000    [C]
-  Allocated to Saudi Arabia (population share 58%)                  40,600    [R]
-  Model: prevalent adults with disease (national screening rate)    10,219    [V]
-  Diagnosed                                                          9,197    [M]
-  Followed in a specialist centre                                    5,978    [M]
-  Label-eligible (adult, anemic, not cured)                          3,587    [M]
-  With a paying route at peak (2030, if reimbursed)                  3,410    [M]
-  Choosing this therapy (peak competitive share)                       996    [M]
-  Still on therapy (persistence)                                       779    [M]
-      - Originator: thalassemia patients in the GCC: Agios Q3 2024 earnings call: 'the GCC region is home
-      to approximately 70,000 patients with thalassemia'
-      - Allocated to Saudi Arabia (population share 58%): All ages, all thalassemia forms, carriers
-      possibly included in regional registries
-      - Model: prevalent adults with disease (national screening rate): 25% of the allocated originator
-      figure. The label is adults only; the screening-based rate (0.7/1000 adults) already excludes
-      children and carriers.
+  Step                                               Patients  Grade
+  -------------------------------------------------  --------  -----
+  Originator: thalassemia patients in GCC              70,000    [C]
+  Allocated to Saudi Arabia (share 58%)                40,600    [R]
+  Model: prevalent adults with disease                 10,219    [V]
+  Diagnosed                                             9,197    [M]
+  Followed in a specialist centre                       5,978    [M]
+  Label-eligible (adult, anemic, not cured)             3,587    [M]
+  With a paying route at peak (2030, if reimbursed)     3,410    [M]
+  Choosing this therapy (peak competitive share)          996    [M]
+  Still on therapy (persistence)                          779    [M]
+      - Originator: thalassemia patients in GCC: Agios Q3 2024 earnings call: 'the GCC region is home to
+      approximately 70,000 patients with thalassemia'
+      - Allocated to Saudi Arabia (share 58%): GCC population ~60.5m (2024); Saudi Arabia 35.3m = 58%.
+      Used to allocate the GCC figure to Saudi Arabia; the Eastern Province burden argues for an even
+      higher share All ages, all thalassemia forms; carriers possibly included in regional registries
+      - Model: prevalent adults with disease: 25% of the allocated originator figure. Anchor: Saudi
+      national premarital screening data (0.7 beta-thalassemia disease per 1,000 adults screened,
+      2011-2015).
       - With a paying route at peak (2030, if reimbursed): 95% of eligible; uncovered and not-yet-listed
       payers excluded
-      - Choosing this therapy (peak competitive share): 29% vs standard of care, luspatercept, gene
-      therapy where available
-      - Still on therapy (persistence): x 78%; originator reports 75% 6-month persistency in the US
+      - Choosing this therapy (peak competitive share): 29% vs standard of care and exagamglogene
+      autotemcel, luspatercept
+      - Still on therapy (persistence): x 78%; originator reports 75% 6-month persistency at home
 
   Price per patient-year
   Step                                                                               USD  Grade
@@ -240,55 +241,61 @@
   -------------------------------------------------------------------------------------  --------
   Naive TAM: originator patient figure x US price                                         $17.3bn
   Originator US launch logic applied here: 65% addressable x 20% penetration x US price    $2.2bn
-  Same US logic on the model's eligible pool (3,587 x 65% x 20% x US price)               $198.2m
+  Same logic on the model's eligible pool (3,587 x 65% x 20% x US price)                  $198.2m
   This model: peak net sales if reimbursed (2030)                                         $125.3m
   This model: peak net sales, probability-weighted                                         $99.0m
 
   Disagreements, and why
-    1. Patient count. The 70,000 GCC figure is a headline prevalence across all ages and forms. The
-    adult, anemic, in-care, label-eligible pool in Saudi Arabia is 3,587 (9% of the allocated figure).
-    Saudi national screening data (0.7 beta-thalassemia disease per 1,000 adults screened, 2011-2015) is
-    the anchor, not a regional registry.
+    1. Patient count. The 70,000 GCC figure is a headline prevalence (all ages, all thalassemia forms;
+    carriers possibly included in regional registries). The label-eligible pool in Saudi Arabia is 3,587
+    (9% of the allocated figure). The anchor is Saudi national premarital screening data (0.7
+    beta-thalassemia disease per 1,000 adults screened, 2011-2015), not a regional registry.
     2. Price. US $425,000 is not a reference for Saudi Arabia: the ERP rule (median of 5 basket prices)
     gives $234,000 list, and procurement discounts, early-access pricing and the budget ceiling bring
     the blended net to $160,888 at peak (38% of US).
-    3. Timing. Agios guided 'national procurement agreements over the next couple of years' (Q3 2025).
-    The model has the first institutional listings in 2026.7 and NUPCO coverage from 2027.4, with peak
-    uptake only in 2030. Revenue before that is early-access, hospital-budget business.
+    3. Timing. Originator: 'Early patient access case-by-case; national procurement agreements expected
+    over the next couple of years' (Agios Q3 2025 results,
+    https://investor.agios.com/news-releases/news-release-details/agios-reports-third-quarter-2025-financial-results-and-provides).
+    The model has the first paying route in 2026.7, MoH hospitals via NUPCO central procurement coverage
+    from 2027.4, and peak uptake only in 2030. Revenue before that is early-access, hospital-budget
+    business.
     4. Budget impact. At the modelled patient numbers the public bill would exceed 1.0% of national drug
     spend from 2030; the model assumes the payer forces a price-volume agreement rather than paying list
-    for everyone. An originator deck rarely models this.
+    for everyone. Originator decks rarely model this.
 
   Agreements
-    - Persistence: originator reports 75% at 6 months (US); the model uses 78% annual on-therapy.
+    - Persistence: originator reports 75% at 6 months at home; the model uses 78% annual on-therapy.
     - Saudi Arabia was worth an approval-first strategy: the model's verdict and Agios' sequencing (SFDA
     before FDA, NewBridge partnership) agree.
-    - NTDT is the larger patient segment and TDT the better-paying one; the model's segment shares
-    reflect the same trial results Agios cites (ENERGIZE 42.3% vs 1.6%; ENERGIZE-T 30.4% vs 12.6%).
+    - NTDT is the larger patient segment and TDT the better-paying one; the model's segment shares rest
+    on the same trial results Agios cites (ENERGIZE 42.3% vs 1.6%; ENERGIZE-T 30.4% vs 12.6%).
 
   Calibration
-    - Agios ex-US net revenue reported so far in 2026 (EU + GCC combined): $12.3m across 2026Q1, 2026Q2,
-    2026Q3. The model's 2026 Saudi in-market net sales (early access only) are $6.9m (~29 patients on
-    therapy). Saudi alone must stay below the ex-US total, which it does.
+    - Originator-reported ex-US net revenue (EU + GCC combined): $12.3m across 2026Q1, 2026Q2, 2026Q3
+    (Agios 10-Q Q1 2026 (rest of world $1,895k), 8-K Q2 2026 (ex-US $3.8m: 'anticipated demand in EU and
+    continued early demand in the GCC'), Q3 2026 call ($6.6m ex-US). EU + GCC combined; Saudi share not
+    disclosed.). The model's 2026 Saudi Arabia in-market net sales are $6.9m (~29 patients on therapy).
+    This country alone must stay below the reported total; it does.
 
 -- WHERE THE MODEL DISAGREES WITH AGIOS' OWN STATED NUMBERS --------------------------------------------
 
   Patients
   Step                                               Patients  Grade
   -------------------------------------------------  --------  -----
-  Model: prevalent adults with disease                    216    [M]
+  Model: prevalent adults with disease                    216    [A]
   Diagnosed                                               151    [M]
   Followed in a specialist centre                         113    [M]
   Label-eligible (adult, anemic, not cured)                74    [M]
   With a paying route at peak (2034, if reimbursed)        72    [M]
   Choosing this therapy (peak competitive share)           13    [M]
   Still on therapy (persistence)                           10    [M]
-      - Model: prevalent adults with disease: No originator figure for this country
+      - Model: prevalent adults with disease: No originator patient figure covers this country. Anchor: no
+      national prevalence figure exists for Colombia; the estimate is bounded by regional studies and the
+      national orphan-disease registry.
       - With a paying route at peak (2034, if reimbursed): 98% of eligible; uncovered and not-yet-listed
       payers excluded
-      - Choosing this therapy (peak competitive share): 18% vs standard of care, luspatercept, gene
-      therapy where available
-      - Still on therapy (persistence): x 75%; originator reports 75% 6-month persistency in the US
+      - Choosing this therapy (peak competitive share): 18% vs standard of care and luspatercept
+      - Still on therapy (persistence): x 75%; originator reports 75% 6-month persistency at home
 
   Price per patient-year
   Step                                                                               USD  Grade
@@ -303,9 +310,9 @@
   Revenue comparators
   View                                                                                   Per year
   -------------------------------------------------------------------------------------  --------
-  Naive TAM: originator patient figure x US price                                          $91.7m
+  Naive TAM: prevalent patient figure x US price                                           $91.7m
   Originator US launch logic applied here: 65% addressable x 20% penetration x US price    $11.9m
-  Same US logic on the model's eligible pool (74 x 65% x 20% x US price)                    $4.1m
+  Same logic on the model's eligible pool (74 x 65% x 20% x US price)                       $4.1m
   This model: peak net sales if reimbursed (2034)                                           $1.8m
   This model: peak net sales, probability-weighted                                          $697k
 
@@ -318,7 +325,7 @@
     INVIMA review of ~29 months and 12% expected bad debt.
 
   Agreements
-    - Persistence: originator reports 75% at 6 months (US); the model uses 75% annual on-therapy.
+    - Persistence: originator reports 75% at 6 months at home; the model uses 75% annual on-therapy.
 
 -- SENSITIVITY: Saudi Arabia risk-adjusted NPV (base $111.9m) ------------------------------------------
 

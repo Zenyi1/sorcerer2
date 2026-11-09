@@ -1,6 +1,7 @@
 {
   "code": "CO",
   "name": "Colombia",
+  "iso3": "COL",
   "currency": "COP",
   "fx_per_usd": {
     "value": 4100,
@@ -201,7 +202,8 @@
         "high": 0.012,
         "status": "assumption",
         "source": "No national figure exists: 'la ausencia de un programa nacional de tamizaje no permite determinar su prevalencia' (Archivos de Medicina 2019, https://www.redalyc.org/journal/2738/273859249013/273859249013.pdf). Regional studies (Cartagena, Buenaventura, Cali, San Andres, Bogota 2009-2020) find thalassemia mostly as trait. Central case = ~200 adults with beta-thalassemia major/intermedia nationally, bounded by the 88,426-person national orphan registry (June 2024).",
-        "note": "This is the single weakest input in the Colombia case and is flagged in sensitivity"
+        "note": "This is the single weakest input in the Colombia case and is flagged in sensitivity",
+        "anchor": "no national prevalence figure exists for Colombia; the estimate is bounded by regional studies and the national orphan-disease registry"
       },
       "alpha_thal_hbh_multiplier": {
         "value": 1.05,
@@ -221,17 +223,19 @@
       "label_eligible_share": {
         "value": 0.65,
         "status": "assumption",
-        "source": "Adults with TDT or NTDT Hb <=10 g/dL"
-      },
-      "tdt_share_of_eligible": {
-        "value": 0.55,
-        "status": "assumption",
-        "source": "Diagnosed cases skew severe"
+        "source": "Adults with TDT or NTDT Hb <=10 g/dL",
+        "criteria": "adult, anemic, not cured"
       },
       "soc_annual_cost_usd": {
         "value": 18000,
         "status": "assumption",
         "source": "Transfusion + generic deferasirox at Colombian prices"
+      },
+      "segment_mix": {
+        "TDT": 0.55,
+        "NTDT": 0.45,
+        "status": "assumption",
+        "source": "Diagnosed cases skew severe Segment ids must match the asset's competitor segments; a single-segment asset ignores this."
       }
     },
     "SCD": {
@@ -240,7 +244,8 @@
         "low": 0.05,
         "high": 0.2,
         "status": "assumption",
-        "source": "Afro-Colombians ~10% of population; SCD incidence ~1% in Afro-descendant population (Novartis Colombia); ~4,000-8,000 patients nationally is the range quoted by patient groups. Not verified against Sivigila counts."
+        "source": "Afro-Colombians ~10% of population; SCD incidence ~1% in Afro-descendant population (Novartis Colombia); ~4,000-8,000 patients nationally is the range quoted by patient groups. Not verified against Sivigila counts.",
+        "anchor": "no national count exists for Colombia; the estimate rests on the Afro-Colombian population share and patient-group figures"
       },
       "alpha_thal_hbh_multiplier": {
         "value": 1.0,
@@ -260,17 +265,19 @@
       "label_eligible_share": {
         "value": 0.5,
         "status": "assumption",
-        "source": "Adults with symptomatic anemia; pending label"
-      },
-      "tdt_share_of_eligible": {
-        "value": 0.15,
-        "status": "assumption",
-        "source": "Chronic transfusion minority"
+        "source": "Adults with symptomatic anemia; pending label",
+        "criteria": "adult, symptomatic"
       },
       "soc_annual_cost_usd": {
         "value": 6000,
         "status": "assumption",
         "source": "Hydroxyurea, admissions at Colombian prices"
+      },
+      "segment_mix": {
+        "TDT": 0.15,
+        "NTDT": 0.85,
+        "status": "assumption",
+        "source": "Chronic transfusion minority Segment ids must match the asset's competitor segments; a single-segment asset ignores this."
       }
     }
   },

@@ -25,7 +25,8 @@
       "NTDT": "Non-transfusion-dependent thalassemia with Hb <= 10 g/dL"
     },
     "dosing": "100 mg orally twice daily (730 tablets/year)",
-    "mechanism": "Pyruvate kinase activator; first oral disease-modifying therapy across alpha and beta thalassemia"
+    "mechanism": "Pyruvate kinase activator; first oral disease-modifying therapy across alpha and beta thalassemia",
+    "label_eligible_share_override": null
   },
   "regulatory_status": {
     "SA": {
@@ -250,30 +251,26 @@
   },
   "biotech_view": {
     "label": "Agios' own stated numbers",
-    "gcc_thalassemia_patients": {
-      "value": 70000,
+    "home_country": "US",
+    "home_price_usd": {
+      "value": 425000,
       "status": "company_stated",
-      "source": "Agios Q3 2024 earnings call: 'the GCC region is home to approximately 70,000 patients with thalassemia'"
+      "source": "Agios earnings call at FDA approval"
     },
-    "gcc_population_share_SA": {
-      "value": 0.58,
-      "status": "reported",
-      "source": "GCC population ~60.5m (2024); Saudi Arabia 35.3m = 58%. Used to allocate the GCC figure to Saudi Arabia; the Eastern Province burden argues for an even higher share"
-    },
-    "us_diagnosed_adults": {
-      "value": 6000,
-      "status": "company_stated",
-      "source": "Agios: ~6,000 US adults with thalassemia"
-    },
-    "us_launch_addressable_share": {
+    "home_launch_addressable_share": {
       "value": 0.65,
       "status": "company_stated",
       "source": "Agios: initial US launch targets ~65% (~4,000) of diagnosed adults"
     },
-    "us_price_usd": {
-      "value": 425000,
+    "implied_home_penetration_at_peak": {
+      "value": 0.2,
+      "status": "assumption",
+      "source": "$1bn global peak across PKD + thalassemia against a $1.7bn US thalassemia launch TAM (4,000 x $425k) implies roughly 20% net penetration; used only to build the 'biotech-style' comparator"
+    },
+    "home_diagnosed_patients": {
+      "value": 6000,
       "status": "company_stated",
-      "source": "Agios earnings call at FDA approval"
+      "source": "Agios: ~6,000 US adults with thalassemia"
     },
     "global_peak_sales_usd": {
       "value": 1000000000,
@@ -285,13 +282,39 @@
       "status": "company_stated",
       "source": "Agios Q3 2026 call"
     },
-    "saudi_access_statement": {
-      "value": "Early patient access case-by-case; national procurement agreements expected over the next couple of years",
-      "status": "company_stated",
-      "source": "Agios Q3 2025 results, https://investor.agios.com/news-releases/news-release-details/agios-reports-third-quarter-2025-financial-results-and-provides"
+    "regional_patient_claims": [
+      {
+        "region": "GCC",
+        "patients": 70000,
+        "country_shares": {
+          "SA": 0.58,
+          "AE": 0.17,
+          "KW": 0.08,
+          "OM": 0.09,
+          "QA": 0.05,
+          "BH": 0.03
+        },
+        "status": "company_stated",
+        "source": "Agios Q3 2024 earnings call: 'the GCC region is home to approximately 70,000 patients with thalassemia'",
+        "shares_source": "GCC population ~60.5m (2024); Saudi Arabia 35.3m = 58%. Used to allocate the GCC figure to Saudi Arabia; the Eastern Province burden argues for an even higher share",
+        "basis_note": "All ages, all thalassemia forms; carriers possibly included in regional registries"
+      }
+    ],
+    "access_statements": {
+      "SA": {
+        "value": "Early patient access case-by-case; national procurement agreements expected over the next couple of years",
+        "status": "company_stated",
+        "source": "Agios Q3 2025 results, https://investor.agios.com/news-releases/news-release-details/agios-reports-third-quarter-2025-financial-results-and-provides"
+      }
     },
-    "ex_us_quarterly_revenue_usd": {
-      "value": {
+    "reported_revenue": {
+      "label": "ex-US net revenue (EU + GCC combined)",
+      "covers": [
+        "SA",
+        "AE",
+        "EU"
+      ],
+      "periods": {
         "2026Q1": 1900000,
         "2026Q2": 3800000,
         "2026Q3": 6600000
@@ -299,10 +322,12 @@
       "status": "verified",
       "source": "Agios 10-Q Q1 2026 (rest of world $1,895k), 8-K Q2 2026 (ex-US $3.8m: 'anticipated demand in EU and continued early demand in the GCC'), Q3 2026 call ($6.6m ex-US). EU + GCC combined; Saudi share not disclosed."
     },
-    "implied_us_penetration_at_peak": {
-      "value": 0.2,
-      "status": "assumption",
-      "source": "$1bn global peak across PKD + thalassemia against a $1.7bn US thalassemia launch TAM (4,000 x $425k) implies roughly 20% net penetration; used only to build the 'biotech-style' comparator"
+    "agreements": {
+      "SA": [
+        "Saudi Arabia was worth an approval-first strategy: the model's verdict and Agios' sequencing (SFDA before FDA, NewBridge partnership) agree.",
+        "NTDT is the larger patient segment and TDT the better-paying one; the model's segment shares rest on the same trial results Agios cites (ENERGIZE 42.3% vs 1.6%; ENERGIZE-T 30.4% vs 12.6%)."
+      ],
+      "*": []
     }
   },
   "pipeline_indications": {

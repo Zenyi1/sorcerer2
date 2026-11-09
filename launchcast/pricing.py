@@ -87,7 +87,7 @@ def erp_price(pricing: dict, reference_prices: list[dict], origin_country: str =
     capped = False
     if pricing.get("origin_country_cap") and origin_price is not None and price > origin_price:
         price, capped = origin_price, True
-    note = f"{stat} of {len(used)} basket prices"
+    note = f"{stat} of {len(used)} basket price{'s' if len(used) != 1 else ''}"
     if capped:
         note += f"; capped at country-of-origin ({origin_country}) price"
     return ERPResult(price, stat, used, excluded, capped, origin_price, note)

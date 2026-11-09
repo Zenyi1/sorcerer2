@@ -1,0 +1,50 @@
+{
+  "_comment": "Copy to data/assets/<id>.json. Files starting with '_' are ignored. Every graded node is {value, status, source}; status in verified | reported | company_stated | assumption | unknown. Run `launchcast validate` after editing.",
+  "id": "<id, lower case, used on the command line and as the asset's competitor id>",
+  "name": "<INN (BRAND)>",
+  "originator": "<company (ticker)>",
+  "deal": {"type": "<MOU / licence / distribution: who pays what>", "partner": "<partner>", "signed": 2026, "territory": ["SA"], "status": "reported", "source": "<url>"},
+  "indication": {
+    "id": "<indication id; every country file needs epidemiology.<id>>",
+    "label": "<approved or expected label wording>",
+    "segments": {"<seg>": "<description>"},
+    "dosing": "<dose>",
+    "mechanism": "<one line>",
+    "label_eligible_share_override": {"value": 0.6, "status": "assumption", "source": "<why>", "criteria": "<who counts as eligible>"}
+  },
+  "regulatory_status": {
+    "SA": {"status": "approved | filed | not_filed | withdrawn", "date": "YYYY-MM-DD (approved)", "expected_decision": "YYYY-MM (filed)", "p_approval": 0.8, "status_evidence": "verified", "source": "<url>"},
+    "CO": {"status": "not_filed", "status_evidence": "assumption", "source": ""}
+  },
+  "clinical": {"<seg>": {"trial": "", "primary_endpoint": "", "result": "", "status": "verified", "source": ""}},
+  "reference_prices": [
+    {"country": "US", "indication": "<indication id>", "brand": "", "annual_usd": 100000, "status": "verified", "source": "<WAC source and dosing arithmetic>"},
+    {"country": "DE", "indication": "<indication id>", "annual_usd": null, "status": "unknown", "source": "not yet listed"}
+  ],
+  "competitors": {
+    "<seg>": [
+      {"id": "soc", "name": "<standard of care>", "efficacy": 0.0, "convenience": 0.7, "safety": 0.85, "annual_price_usd": 5000, "availability": {"SA": "available", "CO": "available"}, "status": "verified"},
+      {"id": "<id>", "name": "<the asset>", "efficacy": 0.5, "convenience": 1.0, "safety": 0.7, "annual_price_usd": null, "availability": {"SA": "available", "CO": "available"}, "note": "price comes from the country ERP result"},
+      {"id": "<rival>", "name": "<rival>", "efficacy": 0.5, "convenience": 0.5, "safety": 0.8, "annual_price_usd": 150000, "availability": {"SA": "limited", "CO": "none"}, "capacity_share_cap": null, "status": "reported", "source": ""}
+    ]
+  },
+  "uptake": {
+    "years_to_peak": {"value": 5, "status": "assumption", "source": ""},
+    "home_market_observed_share": {"value": null, "status": "unknown", "source": "share of prevalent home-market patients on therapy, if launched"}
+  },
+  "biotech_view": {
+    "label": "<Originator>'s own stated numbers",
+    "home_country": "US",
+    "home_price_usd": {"value": 100000, "status": "company_stated", "source": ""},
+    "home_launch_addressable_share": {"value": 0.65, "status": "company_stated", "source": ""},
+    "implied_home_penetration_at_peak": {"value": 0.2, "status": "assumption", "source": "peak guidance / home TAM"},
+    "persistency_6m": {"value": 0.75, "status": "company_stated", "source": ""},
+    "regional_patient_claims": [
+      {"region": "GCC", "patients": 70000, "country_shares": {"SA": 0.58}, "status": "company_stated", "source": "", "shares_source": "", "basis_note": "all ages, all forms"}
+    ],
+    "access_statements": {"SA": {"value": "<what the originator said about access here>", "status": "company_stated", "source": ""}},
+    "reported_revenue": {"label": "ex-US net revenue", "covers": ["SA"], "periods": {"2026Q1": 0}, "status": "verified", "source": ""},
+    "agreements": {"SA": [], "*": []}
+  },
+  "pipeline_indications": {}
+}

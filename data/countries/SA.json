@@ -1,6 +1,7 @@
 {
   "code": "SA",
   "name": "Saudi Arabia",
+  "iso3": "SAU",
   "currency": "SAR",
   "fx_per_usd": {
     "value": 3.75,
@@ -198,7 +199,8 @@
         "high": 0.9,
         "status": "verified",
         "source": "National premarital screening 2011-2015, n=1,230,582: beta-thalassemia 13.6/1000 (12.9 trait, 0.7 disease); JEGH 2019 https://doaj.org/article/efa04d78045743e4831a5bf995ebcd2d ; regional 134/1000 hemoglobinopathy in Eastern Province (Memish 2011, https://pubmed.ncbi.nlm.nih.gov/21623050/)",
-        "note": "Screened population is marriage-age adults, so this is an adult prevalence of beta-thalassemia disease (major + intermedia). Low case assumes some 'disease' calls are mild intermedia never seen in care."
+        "note": "Screened population is marriage-age adults, so this is an adult prevalence of beta-thalassemia disease (major + intermedia). Low case assumes some 'disease' calls are mild intermedia never seen in care.",
+        "anchor": "Saudi national premarital screening data (0.7 beta-thalassemia disease per 1,000 adults screened, 2011-2015)"
       },
       "alpha_thal_hbh_multiplier": {
         "value": 1.12,
@@ -218,17 +220,19 @@
       "label_eligible_share": {
         "value": 0.6,
         "status": "assumption",
-        "source": "Adults with TDT, or NTDT with Hb <=10 g/dL (ENERGIZE entry criteria); excludes post-HSCT / gene therapy"
-      },
-      "tdt_share_of_eligible": {
-        "value": 0.45,
-        "status": "assumption",
-        "source": "Centre cohorts are TDT-heavy; national pool is NTDT-heavy"
+        "source": "Adults with TDT, or NTDT with Hb <=10 g/dL (ENERGIZE entry criteria); excludes post-HSCT / gene therapy",
+        "criteria": "adult, anemic, not cured"
       },
       "soc_annual_cost_usd": {
         "value": 40000,
         "status": "assumption",
         "source": "Transfusion + chelation + monitoring; Saudi TDT cost-of-illness study (Medicine 2025, PMC12237305) exists but was not readable from this session"
+      },
+      "segment_mix": {
+        "TDT": 0.45,
+        "NTDT": 0.55,
+        "status": "assumption",
+        "source": "Centre cohorts are TDT-heavy; national pool is NTDT-heavy Segment ids must match the asset's competitor segments; a single-segment asset ignores this."
       }
     },
     "SCD": {
@@ -237,7 +241,8 @@
         "low": 2.6,
         "high": 4.5,
         "status": "verified",
-        "source": "Premarital screening 2011-2015: SCD 49.6/1000 (45.8 trait, 3.8 disease)"
+        "source": "Premarital screening 2011-2015: SCD 49.6/1000 (45.8 trait, 3.8 disease)",
+        "anchor": "Saudi national premarital screening data (3.8 sickle cell disease per 1,000 adults screened, 2011-2015)"
       },
       "alpha_thal_hbh_multiplier": {
         "value": 1.0,
@@ -257,17 +262,19 @@
       "label_eligible_share": {
         "value": 0.5,
         "status": "assumption",
-        "source": "Adults with symptomatic anemia; pending label"
-      },
-      "tdt_share_of_eligible": {
-        "value": 0.15,
-        "status": "assumption",
-        "source": "Chronic transfusion minority"
+        "source": "Adults with symptomatic anemia; pending label",
+        "criteria": "adult, symptomatic"
       },
       "soc_annual_cost_usd": {
         "value": 15000,
         "status": "assumption",
         "source": "Hydroxyurea, crises, admissions"
+      },
+      "segment_mix": {
+        "TDT": 0.15,
+        "NTDT": 0.85,
+        "status": "assumption",
+        "source": "Chronic transfusion minority Segment ids must match the asset's competitor segments; a single-segment asset ignores this."
       }
     }
   },

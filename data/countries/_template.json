@@ -1,0 +1,74 @@
+{
+  "_comment": "Copy to data/countries/<CODE>.json (ISO2, upper case). Files starting with '_' are ignored. Graded nodes are {value, status, source}. Payer share_of_patients must sum to 1; segment_mix must sum to 1 and use the asset's segment ids. Run `launchcast validate` after editing.",
+  "code": "XX",
+  "name": "<Country>",
+  "iso3": "XXX",
+  "currency": "XXX",
+  "fx_per_usd": {"value": 1.0, "status": "reported", "source": ""},
+  "fx_annual_drift_vs_usd": {"value": 0.0, "status": "assumption", "source": "negative = local currency depreciates"},
+  "population": {
+    "total": {"value": 1000000, "year": 2024, "status": "verified", "source": ""},
+    "nationals": {"value": 1000000, "year": 2024, "status": "verified", "source": "set equal to total when there is no national/expat split"},
+    "adult_share_nationals": {"value": 0.7, "status": "verified", "source": ""},
+    "annual_growth": {"value": 0.01, "status": "reported", "source": ""},
+    "epidemiology_base": "nationals_adults",
+    "base_note": ""
+  },
+  "macro": {
+    "gdp_per_capita_usd": {"value": 10000, "year": 2024, "status": "reported", "source": ""},
+    "health_exp_per_capita_usd": {"value": 500, "year": 2023, "status": "reported", "source": ""},
+    "oop_share_of_health_exp": {"value": 0.2, "year": 2023, "status": "reported", "source": ""},
+    "pharma_market_usd": {"value": 1000000000, "year": 2024, "status": "assumption", "source": "used only for the budget-impact ceiling"}
+  },
+  "health_system": {"summary": "<who pays, how drugs are procured, where the disease is treated>", "sources": []},
+  "regulatory": {
+    "agency": "<agency>",
+    "pathway": "<reliance / full review>",
+    "typical_review_months": {"value": 12, "status": "reported", "source": ""},
+    "p_approval_given_fda_ema": {"value": 0.9, "status": "assumption", "source": ""},
+    "filing_lag_years": 1
+  },
+  "pricing": {
+    "authority": "<who sets the price>",
+    "method": "external_reference",
+    "statistic": "median | min | mean | pNN",
+    "origin_country_cap": true,
+    "basket": ["US", "DE", "FR", "GB"],
+    "months_to_price_after_approval": {"value": 6, "status": "assumption", "source": ""},
+    "reprice_after_years": 99,
+    "reprice_cut": {"value": 0.0, "status": "assumption", "source": ""},
+    "status": "reported",
+    "notes": "",
+    "sources": []
+  },
+  "payers": [
+    {"id": "public", "name": "<main public payer>", "share_of_patients": 0.8, "p_coverage": 0.7, "months_to_coverage": 12, "net_price_factor": 0.85, "dso_days": 120, "bad_debt": 0.0, "public": true, "note": ""},
+    {"id": "private", "name": "<private insurance>", "share_of_patients": 0.15, "p_coverage": 0.5, "months_to_coverage": 12, "net_price_factor": 0.95, "dso_days": 60, "bad_debt": 0.02, "public": false, "note": ""},
+    {"id": "uncovered", "name": "No payer", "share_of_patients": 0.05, "p_coverage": 0.0, "months_to_coverage": 0, "net_price_factor": 0.0, "dso_days": 0, "bad_debt": 0.0, "public": false}
+  ],
+  "early_access_share": {"value": 0.01, "status": "assumption", "source": "share of eligible patients treated case-by-case before listing"},
+  "budget_ceiling_share_of_pharma_market": {"value": 0.005, "status": "assumption", "source": ""},
+  "epidemiology": {
+    "<indication id>": {
+      "disease_prevalence_per_1000_adults": {"value": 0.1, "low": 0.05, "high": 0.2, "status": "assumption", "source": "", "anchor": "<one line: what this number rests on>"},
+      "alpha_thal_hbh_multiplier": {"value": 1.0, "status": "verified", "source": "other label-covered forms not in the prevalence figure; 1.0 = none"},
+      "diagnosed_share": {"value": 0.7, "status": "assumption", "source": ""},
+      "in_specialist_care_share": {"value": 0.7, "status": "assumption", "source": ""},
+      "label_eligible_share": {"value": 0.6, "status": "assumption", "source": "", "criteria": "<who counts>"},
+      "segment_mix": {"<seg A>": 0.5, "<seg B>": 0.5, "status": "assumption", "source": ""},
+      "soc_annual_cost_usd": {"value": 5000, "status": "assumption", "source": ""}
+    }
+  },
+  "competition_weights": {"efficacy": 2.5, "convenience": 1.0, "safety": 1.0, "price": 1.0, "status": "assumption", "note": "higher price weight = more price-sensitive payer"},
+  "commercial": {
+    "perspective_note": "launch-partner P&L",
+    "upfront_costs_usd": [{"label": "registration dossier", "amount": 300000, "timing": "filing"}, {"label": "pricing / access dossier, PV", "amount": 150000, "timing": "approval"}],
+    "prelaunch_opex_usd_per_year": 100000,
+    "launch_opex_usd_per_year": {"value": 500000, "status": "assumption", "source": ""},
+    "opex_ramp_years": 1,
+    "transfer_price_share_of_net": {"value": 0.65, "status": "assumption", "source": "set to the deal terms"},
+    "logistics_share_of_net": 0.07,
+    "cost_of_capital": 0.10,
+    "persistence_annual": {"value": 0.75, "status": "assumption", "source": ""}
+  }
+}
